@@ -1,0 +1,313 @@
+---
+title: "TBC *"
+author: "Mikel Diaz-Rodriguez"
+date: "March 7th, 2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE,
+                      echo = TRUE)
+```
+
+# Introduction
+
+This document contains code to enable reproducibility of the paper "TBC".
+
+For this, it is necessary to execute the steps shown in the following lines.
+
+# Complete Spatial Randomness
+### Paquetes necesarios
+
+Import of the necessary packages to analyse the CSR.
+
+```{r echo=FALSE, results='hide'}
+# ipak function: install and load multiple R packages.
+# check to see if packages are installed. Install them if they are not, then load them into the R session.
+
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+}
+# usage
+packages <- c("GGally", "readxl", "rgdal", "rgeos", "sp", "spatstat", "tidyverse", "dismo", "MASS", "ggplot2", "plyr", "maps", "maptools", "raster", "geostatsp", "patchwork")
+ipak(packages)
+```
+
+### Import data
+
+Import the data used in CSR analysis.
+
+```{r, message=FALSE, warning=FALSE, paged.print=FALSE}
+# set your working directory
+setwd("C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/shp")
+
+#EPSG string to help set the projection 
+BNG = "+init=epsg:25829"
+
+#add the study area
+studyarea <- readShapePoly("Galicia.shp", proj4string = CRS(BNG))
+
+#and check it
+plot(studyarea)
+
+# add the sites
+sites_central <- readOGR(dsn="sites_central.shp", layer="sites_central")
+sites <- readShapePoints("sites_central.shp", proj4string = CRS(BNG))
+
+# add the random sites
+
+
+# plot the studyarea and the sites and check everything looks OK
+plot(sites, col="blue", pch=20, add=T)
+
+# remove any sites with the same grid reference
+sites <- remove.duplicates(sites)
+
+# select the points inside studyarea 
+sitesSub <- sites[studyarea,]
+
+#check to see that they've been removed
+plot(studyarea)
+plot(sitesSub, col="red", pch=20, add=T)
+
+# set a window as the studyarea
+window <- as.owin(studyarea)
+plot(window)
+
+# create a ppp object
+sitesSub.ppp <- ppp(x=sitesSub$Easting,y=sitesSub$Northing,window=window)
+
+# plot the sites and the studyarea
+plot(sitesSub.ppp,pch=16,cex=0.5, main="Palaeolithic archaeological sites")
+```
+
+
+```{r, message=FALSE, warning=FALSE, paged.print=FALSE}
+#Import shapefile
+#Normality test
+shapiro.test(sites)
+
+#Cargar capa shape aleatorios
+#Test de normalidad
+shapiro.test(aleatorios$utmx)
+
+#Si se acepta la hipótesis alternativa no siguen una distribución normal, se usa K-S Test.
+#Test no paramétrico para comprobar si pertenecen a la misma población
+ks.test(sites$utmx,aleatorios$utmx)
+```
+
+### Kernel density analysis
+
+Buscar el mejor método para los análisis cluster.
+
+```{r echo=TRUE, results='hide'}
+a <- bw.diggle(sitesSub.ppp)
+a
+plot(a, main="a. Likelihood crooss-validation bw.diggle criterion for smoothing bandwith")
+pdf(file = "~output/Figura1C.pdf",width = 5,height = 12)
+
+b <- bw.ppl(sitesSub.ppp)
+b
+plot(b, main="b. Likelihood cross-validation bw.ppl criterion for smoothing bandwith")
+
+c <- bw.scott(sitesSub.ppp)#No interesa
+c
+plot(c, main="c. Bandwith selection in multidimensional smoothing with bw.scott method")
+
+d <- bw.frac(sitesSub.ppp)
+d
+plot(d, main="d. Bandwith selection rule based on the window geometry with bw.frac method")
+
+e <- bw.CvL(sitesSub.ppp) 
+e
+plot(e, main="e. Smoothing bandwith selection based on Cambell's formula with bw.CvL method")
+```
+
+### Funcion de Intensidad
+
+Creacion de la funcion de intensidad.
+
+```{r echo=TRUE, results='hide'}
+elev.rh <- rhohat(sppp, elev, confidence=0.95)
+pend.rh <- rhohat(sppp, pend, confidence=0.95)
+chumed.rh <- rhohat(sppp, chumed, confidence=0.95)
+chidro.rh <- rhohat(sppp, chidro, confidence=0.95)
+provi.rh <- rhohat(sppp, provi, confidence=0.95)
+```
+
+### Crear Figura 1B
+
+Crear y exportar grafico de intensidad relativo a la altitud.
+
+```{r echo=TRUE, results='hide'}
+plot(elev.rh, main= "", xlab="m.s.n.m", ylab="", xlim=c(250,500), legend=FALSE, cex.axis=0.9)
+legend("topleft", legend="Altitud", cex=0.9, bty="n", text.font=2)
+
+pdf(file = "~output/Figura1B.pdf",width = 5,height = 12)
+```
+
+### Crear Figura 1C
+
+Crear y exportar grafico de intensidad relativo a la pendiente.
+
+```{r echo=TRUE, results='hide'}
+plot(pend.rh, main= "", xlab="Grados", ylab="", xlim=c(0,6.8), legend=FALSE, cex.axis=0.9)
+legend("topleft", legend="Pendiente", cex=0.9, bty="n", text.font=2)
+
+pdf(file = "~output/Figura1C.pdf",width = 5,height = 12)
+```
+
+### Crear Figura 1D
+
+Crear grafico de intensidad relativo a la hidrologia potencial.
+
+```{r echo=TRUE, results='hide'}
+plot(pend.rh, main= "", xlab="Segundos", ylab="", xlim=c(0,6500), legend=FALSE, cex.axis=0.9)
+legend("topleft", legend="Coste a zonas de Hidrologia potencial", cex=0.9, bty="n", text.font=2)
+
+pdf(file = "~output/Figura1D.pdf",width = 5,height = 12)
+```
+
+### Crear Figura 1E
+
+Crear y exportar grafico de intensidad relativo al coste a las zonas de humedal.
+
+```{r echo=TRUE, results='hide'}
+plot(pend.rh, main= "", xlab="Segundos", ylab="", xlim=c(0,1150), legend=FALSE, cex.axis=0.9)
+legend("topleft", legend="Coste a zonas de Humedal", cex=0.9, bty="n", text.font=2)
+
+pdf(file = "~output/Figura1E.pdf",width = 5,height = 12)
+```
+
+### Crear Figura 1F
+
+Crear y exportar grafico de intensidad relativo al indice de prominencia visual.
+
+```{r echo=TRUE, results='hide'}
+plot(pend.rh, main= "", xlab="Indice", ylab="", xlim=c(0,105), legend=FALSE, cex.axis=0.9)
+legend("topleft", legend="Prominencia visual", cex=0.9, bty="n", text.font=2)
+
+pdf(file = "~output/Figura1F.pdf",width = 5,height = 12)
+```
+
+# Crear graficos de barras
+### Paquetes necesarios
+
+Importacion de los paquetes necesarios para crear los graficos de barras.
+
+```{r echo=TRUE, results='hide'}
+spatpack<-c("spatstat","dismo", "MASS", "ggplot2", "plyr", "sp","maps","maptools","raster","geostatsp","rgdal")
+lapply(spatpack, require, character.only = TRUE)
+```
+
+### Importar Datos
+
+Paso consistente en importar los datos de los csv.
+
+```{r, message=FALSE, warning=FALSE, paged.print=FALSE}
+altplot <- read.table(file="csv/altplot.csv",header=TRUE, sep=";")
+altplot1 <- read.table(file="csv/altplot1.csv",header=TRUE, sep=";")
+altplot2 <- read.table(file="csv/altplot2.csv",header=TRUE, sep=";")
+altplot3 <- read.table(file="csv/altplot3.csv",header=TRUE, sep=";")
+altplot4 <- read.table(file="csv/altplot4.csv",header=TRUE, sep=";")
+```
+
+### Crear Figura 2A
+
+Crear y exportar grafico de barras relativo a la altitud.
+
+```{r echo=TRUE, results='hide'}
+altplot$Altitud <- factor (altplot$Altitud, levels = c("0-100", "100-200","200-300","300-400","400-500","500-600","600-700","700-800","800-900","900-1000","1000-1100","1100-1200","1200-1300","1300-1400","1400-1500"))  
+
+p <- ggplot(altplot,aes(Altitud,Porcentaje)) + geom_bar(data=subset(altplot,Categoria=="Terreno"),stat="identity", fill="gray") + geom_line(data=subset(altplot,Categoria=="Yacimiento"), aes(group="Categoria", colour="red"),size=1.5) + guides(colour=FALSE) + theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold")) + labs(title = "", y = "Porcentaje", x = "Altitud (msnm)")  
+p <- p + theme( 
+  panel.background = element_rect(fill = "transparent",colour = NA), 
+  panel.grid.minor = element_blank(), 
+  panel.grid.major = element_blank(), 
+  plot.background = element_rect(fill = "transparent",colour = NA) 
+)
+plot(p)
+
+pdf(file = "~output/Figura2A.pdf",width = 5,height = 12)
+```
+
+### Crear Figura 2B
+
+Crear y exportar grafico de barras relativo a la pendiente.
+
+```{r echo=TRUE, results='hide'}
+altplot1$Pendiente <- factor (altplot1$Pendiente, levels = c("0-5", "5-10","10-15","15-20","20-25","25-30","30-35","35-40","40-45","45-50","50-55","55-60","60-65"))  
+
+p1 <- ggplot(altplot1,aes(Pendiente,Porcentaje)) + geom_bar(data=subset(altplot1,Categoria=="Terreno"),stat="identity", fill="gray") + geom_line(data=subset(altplot1,Categoria=="Yacimiento"), aes(group="Categoria", colour="red"),size=1.5) + guides(colour=FALSE) + theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))+ labs(title = "", y = "Porcentaje", x = "Pendiente (grados)")   
+p1 <- p1 + theme( 
+  panel.background = element_rect(fill = "transparent",colour = NA), 
+  panel.grid.minor = element_blank(), 
+  panel.grid.major = element_blank(), 
+  plot.background = element_rect(fill = "transparent",colour = NA) 
+)
+plot(p1)
+
+pdf(file = "~output/Figura2B.pdf",width = 5,height = 12)
+```
+
+### Crear Figura 2C
+
+Crear y exportar grafico de barras relativo al coste a la hidrologia potencial.
+
+```{r echo=TRUE, results='hide'}
+altplot2$Coste <- factor (altplot2$Coste, levels = c("0-1000", "1000-2000","2000-3000","3000-4000","4000-5000","5000-6000","6000-7000","7000-8000","8000-9000","9000-10000","10000-11000","11000-12000","12000-13000"))  
+
+p2 <- ggplot(altplot2,aes(Coste,Porcentaje)) + geom_bar(data=subset(altplot2,Categoria=="Terreno"),stat="identity", fill="gray") + geom_line(data=subset(altplot2,Categoria=="Yacimiento"), aes(group="Categoria", colour="red"),size=1.5) + guides(colour=FALSE) + theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))+ labs(title = "", y = "Porcentaje", x = "Coste a hidrologia (segundos)")   
+p2 <- p2 + theme( 
+  panel.background = element_rect(fill = "transparent",colour = NA), 
+  panel.grid.minor = element_blank(), 
+  panel.grid.major = element_blank(), 
+  plot.background = element_rect(fill = "transparent",colour = NA) 
+)
+plot(p2)
+
+pdf(file = "~output/Figura2C.pdf",width = 5,height = 12)
+```
+
+### Crear Figura 2D
+
+Crear y exportar grafico de barras relativo al coste a las zonas de humedal.
+
+```{r echo=TRUE, results='hide'}
+altplot3$Coste <- factor (altplot3$Coste, levels = c("0-1000", "1000-2000","2000-3000","3000-4000","4000-5000","5000-6000","6000-7000","7000-8000","8000-9000","9000-10000","10000-11000","11000-12000"))  
+
+p3 <- ggplot(altplot3,aes(Coste,Porcentaje)) + geom_bar(data=subset(altplot3,Categoria=="Terreno"),stat="identity", fill="gray") + geom_line(data=subset(altplot3,Categoria=="Yacimiento"), aes(group="Categoria", colour="red"),size=1.5) + guides(colour=FALSE) + theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))+ labs(title = "", y = "Porcentaje", x = "Coste a zonas de humedal (segundos)") 
+p3 <- p3 + theme( 
+  panel.background = element_rect(fill = "transparent",colour = NA), 
+  panel.grid.minor = element_blank(), 
+  panel.grid.major = element_blank(), 
+  plot.background = element_rect(fill = "transparent",colour = NA) 
+)
+plot(p3)
+
+pdf(file = "~output/Figura2D.pdf",width = 5,height = 12)
+```
+
+### Crear Figura 2E
+
+Crear y exportar grafico de barras relativo al indice de prominencia visual.
+
+```{r echo=TRUE, results='hide'}
+altplot4$Indice <- factor (altplot4$Indice, levels = c("0-20", "20-40","40-60","60-80","80-100","100-120","120-140","140-160","160-180","180-200"))  
+
+p4 <- ggplot(altplot4,aes(Indice,Porcentaje)) + geom_bar(data=subset(altplot4,Categoria=="Terreno"),stat="identity", fill="gray") + geom_line(data=subset(altplot4,Categoria=="Yacimiento"), aes(group="Categoria", colour="red"),size=1.5) + guides(colour=FALSE) + theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))+ labs(title = "", y = "Porcentaje", x = "Indice de Prominencia Visual")  
+p4 <- p4 + theme( 
+  panel.background = element_rect(fill = "transparent",colour = NA), 
+  panel.grid.minor = element_blank(), 
+  panel.grid.major = element_blank(), 
+  plot.background = element_rect(fill = "transparent",colour = NA) 
+)
+plot(p4)
+
+pdf(file = "~output/Figura2E.pdf",width = 5,height = 12)
+```
+
+
