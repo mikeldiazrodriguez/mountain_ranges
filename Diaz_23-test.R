@@ -8,7 +8,7 @@ ipak <- function(pkg){
   sapply(pkg, require, character.only = TRUE)
 }
 # usage
-packages <- c("GGally", "readxl", "rgdal", "rgeos", "sp", "spatstat", "tidyverse", "dismo", "MASS", "ggplot2", "plyr", "maps", "maptools", "raster", "geostatsp", "patchwork")
+packages <- c("GGally", "readxl", "rgdal", "rgeos", "sp", "spatstat", "tidyverse", "dismo", "MASS", "ggplot2", "plyr", "maps", "maptools", "raster", "geostatsp", "patchwork", "foreach")
 ipak(packages)
 
 
@@ -155,3 +155,304 @@ plot(GinhomFunctionC,main="f. G Function for the Central area (inhomogeneous)",l
 par(mfrow=c(1,1))
 png(file = "~/output/Figure3.png",width = 900,height = 1200)
 dev.off()
+
+
+# Resampling analysis
+
+## set the working directory
+setwd("C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/grids")
+
+## Import variables and set the same extent for everyone
+elevation <- raster("dem-northern.tif")
+elevation_central <- raster("dem-central.tif")
+
+## Extract cell site elevations from the Northern area
+sites_northern_spdf <- SpatialPointsDataFrame(sites_northern, data.frame(sites_northern))
+
+
+sites_northern$`Elevation (m)` <-  
+  raster::extract(elevation, 
+                  sites_northern_spdf)
+
+## Calculate the sites densities for Northern area
+sites_northern_densities <- sites_northern %$%
+  elevation %>%
+  density(from = 53, to = 1054, n = 1001) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 1001) %>%
+  dplyr::rename(Elevation = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_altitude_values <- elevation %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 1000 random samples, and calculate their densities
+background_altitude_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_altitude_values %>%
+    sample(nrow(sites_northern),
+           replace = FALSE) %>%
+    density(from = 53, to = 1054, n = 1001) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 1001)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("Elevation", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_altitude_densities,
+            mapping = aes(x = Elevation,
+                          y = Frequency)) +
+  geom_ribbon(data = background_altitude_densities,
+              mapping = aes(x = Elevation,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_northern_densities,
+            mapping = aes(x = Elevation,
+                          y = Frequency),
+            color = "red")
+
+
+
+
+## Extract cell site elevations from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`Elevation (m)` <-  
+  raster::extract(elevation_central, 
+                  sites_central_spdf)
+
+## Calculate the sites densities for Northern area
+sites_central_densities <- sites_central %$%
+  elevation_central %>%
+  density(from = 245, to = 834, n = 589) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 589) %>%
+  dplyr::rename(Elevation = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_altitude_values <- elevation %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 1000 random samples, and calculate their densities
+background_altitude_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_altitude_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 245, to = 834, n = 589) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 1001)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("Elevation", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_altitude_densities,
+            mapping = aes(x = Elevation,
+                          y = Frequency)) +
+  geom_ribbon(data = background_altitude_densities,
+              mapping = aes(x = Elevation,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = Elevation,
+                          y = Frequency),
+            color = "red")
+
+
+
+#Boxplot
+## set the working directory
+setwd("C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv")
+
+## Import files
+boxplot_variables_northern <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+boxplot_variables_central <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_variables_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+
+## Sites vs random sites in Northern Mountain ranges
+## Change the order in x axis
+levels(boxplot_variables_northern$Type)
+boxplot_variables_northern$Type = factor(boxplot_variables_northern$Type, levels=c("Sites", "Random sites"))
+levels(boxplot_variables_northern$Type)
+
+## Create the ALTm boxplot
+p <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=ALTm, fill=Type ))+geom_jitter(aes(x=Type, y=ALTm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTm (m.a.s.l.)")+xlab("Type")+ggtitle("a. ALTm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")
+
+## Create the TPI100m boxplot
+p1 <- ggplot(data = boxplot_variables_northern, col=c(123,234))+geom_boxplot(aes(x=Type, y=TPI100m, fill=Type ))+geom_jitter(aes(x=Type, y=TPI100m,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI100m")+xlab("Type")+ggtitle("b. TPI100m in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TPI500m boxplot
+p2 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=TPI500m, fill=Type ))+geom_jitter(aes(x=Type, y=TPI500m,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI500m")+xlab("Type")+ggtitle("c. TPI500m in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TPI500m boxplot
+p3 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=TPI1000m, fill=Type ))+geom_jitter(aes(x=Type, y=TPI500m,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI1000m")+xlab("Type")+ggtitle("d. TPI1000m in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the SLOm boxplot
+p4 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=SLOm, fill=Type ))+geom_jitter(aes(x=Type, y=SLOm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOm (degrees)")+xlab("Type")+ggtitle("e. SLOm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the ASPm boxplot
+p5 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=ASPm, fill=Type ))+geom_jitter(aes(x=Type, y=ASPm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ASPm")+xlab("Type")+ggtitle("f. ASPm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the HYDROEm boxplot
+p6 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=HYDROEm, fill=Type ))+geom_jitter(aes(x=Type, y=HYDROEm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROEm (m.)")+xlab("Type")+ggtitle("g. HYDROEm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the HYDROCm boxplot
+p7 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=HYDROCm, fill=Type ))+geom_jitter(aes(x=Type, y=HYDROCm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROCm (minutes)")+xlab("Type")+ggtitle("h. HYDROCm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the WETm boxplot
+p8 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=WETm, fill=Type ))+geom_jitter(aes(x=Type, y=WETm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETm (minutes)")+xlab("Type")+ggtitle("i. WETm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the GEOLEm boxplot
+p9 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=GEOLEm, fill=Type ))+geom_jitter(aes(x=Type, y=GEOLEm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLEm (m.)")+xlab("Type")+ggtitle("a. GEOLEm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the GEOLCm boxplot
+p10 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=GEOLCm, fill=Type ))+geom_jitter(aes(x=Type, y=GEOLCm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLCm (minutes)")+xlab("Type")+ggtitle("b. GEOLCm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the VISPRm boxplot
+p11 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=VISPRm, fill=Type ))+geom_jitter(aes(x=Type, y=VISPRm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPRm")+xlab("Type")+ggtitle("c. VISPRm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the LCPCm boxplot
+p12 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=LCPCm, fill=Type ))+geom_jitter(aes(x=Type, y=LCPCm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPCm (minutes)")+xlab("Type")+ggtitle("d. LCPCm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TOTINSm boxplot
+p13 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=TOTINSm, fill=Type ))+geom_jitter(aes(x=Type, y=TOTINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINSm")+xlab("Type")+ggtitle("e. TOTINSm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the DIRINSm boxplot
+p14 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=DIRINSm, fill=Type ))+geom_jitter(aes(x=Type, y=DIRINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINSm")+xlab("Type")+ggtitle("f. DIRINSm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the DIFINSm boxplot
+p15 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=DIFINSm, fill=Type ))+geom_jitter(aes(x=Type, y=DIFINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINSm")+xlab("Type")+ggtitle("g. DIRINSm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the WINDm boxplot
+p16 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=WINDm, fill=Type ))+geom_jitter(aes(x=Type, y=WINDm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WINDm")+xlab("Type")+ggtitle("h. WINDm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+
+## create Figure X
+(p | p1 | p2) /
+(p3 | p4 | p5) /
+(p6 | p7 | p8)
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p9 | p10 | p11) /
+(p12 | p13 | p14)/
+(p15 | p16 | guide_area())
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+
+
+
+## Sites vs random sites in Central Mountain ranges
+## Change the order in x axis
+levels(boxplot_variables_central$Type)
+boxplot_variables_central$Type = factor(boxplot_variables_central$Type, levels=c("Sites", "Random sites"))
+levels(boxplot_variables_central$Type)
+
+## Create the ALTm boxplot
+p <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=ALTm, fill=Type ))+geom_jitter(aes(x=Type, y=ALTm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTm (m.a.s.l.)")+xlab("Type")+ggtitle("a. ALTm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")
+
+## Create the TPI100m boxplot
+p1 <- ggplot(data = boxplot_variables_central, col=c(123,234))+geom_boxplot(aes(x=Type, y=TPI100m, fill=Type ))+geom_jitter(aes(x=Type, y=TPI100m,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI100m")+xlab("Type")+ggtitle("b. TPI100m in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TPI500m boxplot
+p2 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=TPI500m, fill=Type ))+geom_jitter(aes(x=Type, y=TPI500m,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI500m")+xlab("Type")+ggtitle("c. TPI500m in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TPI500m boxplot
+p3 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=TPI1000m, fill=Type ))+geom_jitter(aes(x=Type, y=TPI500m,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI1000m")+xlab("Type")+ggtitle("d. TPI1000m in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the SLOm boxplot
+p4 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=SLOm, fill=Type ))+geom_jitter(aes(x=Type, y=SLOm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOm (degrees)")+xlab("Type")+ggtitle("e. SLOm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the ASPm boxplot
+p5 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=ASPm, fill=Type ))+geom_jitter(aes(x=Type, y=ASPm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ASPm")+xlab("Type")+ggtitle("f. ASPm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the HYDROEm boxplot
+p6 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=HYDROEm, fill=Type ))+geom_jitter(aes(x=Type, y=HYDROEm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROEm (m.)")+xlab("Type")+ggtitle("g. HYDROEm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the HYDROCm boxplot
+p7 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=HYDROCm, fill=Type ))+geom_jitter(aes(x=Type, y=HYDROCm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROCm (minutes)")+xlab("Type")+ggtitle("h. HYDROCm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the WETm boxplot
+p8 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=WETm, fill=Type ))+geom_jitter(aes(x=Type, y=WETm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETm (minutes)")+xlab("Type")+ggtitle("i. WETm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the GEOLEm boxplot
+p9 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=GEOLEm, fill=Type ))+geom_jitter(aes(x=Type, y=GEOLEm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLEm (m.)")+xlab("Type")+ggtitle("a. GEOLEm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the GEOLCm boxplot
+p10 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=GEOLCm, fill=Type ))+geom_jitter(aes(x=Type, y=GEOLCm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLCm (minutes)")+xlab("Type")+ggtitle("b. GEOLCm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the VISPRm boxplot
+p11 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=VISPRm, fill=Type ))+geom_jitter(aes(x=Type, y=VISPRm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPRm")+xlab("Type")+ggtitle("c. VISPRm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the LCPCm boxplot
+p12 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=LCPCm, fill=Type ))+geom_jitter(aes(x=Type, y=LCPCm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPCm (minutes)")+xlab("Type")+ggtitle("d. LCPCm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TOTINSm boxplot
+p13 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=TOTINSm, fill=Type ))+geom_jitter(aes(x=Type, y=TOTINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINSm")+xlab("Type")+ggtitle("e. TOTINSm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the DIRINSm boxplot
+p14 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=DIRINSm, fill=Type ))+geom_jitter(aes(x=Type, y=DIRINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINSm")+xlab("Type")+ggtitle("f. DIRINSm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the DIFINSm boxplot
+p15 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=DIFINSm, fill=Type ))+geom_jitter(aes(x=Type, y=DIFINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINSm")+xlab("Type")+ggtitle("g. DIRINSm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the WINDm boxplot
+p16 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=WINDm, fill=Type ))+geom_jitter(aes(x=Type, y=WINDm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WINDm")+xlab("Type")+ggtitle("h. WINDm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+
+## create Figure X
+(p | p1 | p2) /
+(p3 | p4 | p5) /
+(p6 | p7 | p8)
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p9 | p10 | p11) /
+(p12 | p13 | p14)/
+(p15 | p16 | guide_area())
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+
+
+## Northern Mountain ranges sites vs Central Mountain ranges sites
+## Import files
+boxplot_northern_vs_central <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_northern_vs_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+## Create the ALTrA boxplot
+p <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTrA, fill=Area ))+geom_jitter(aes(x=Area, y=ALTrA,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTrA")+xlab("Area")+ggtitle("a. ALTrA")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+plot(p)
+
+## Create the TPI100m boxplot
+p1 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TPI100m, fill=Area ))+geom_jitter(aes(x=Area, y=TPI100m,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI100m")+xlab("Area")+ggtitle("b. TPI100m")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+plot(p1)
+
+## Create the WINDm boxplot
+p2 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WINDm, fill=Area ))+geom_jitter(aes(x=Area, y=WINDm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WINDm")+xlab("Area")+ggtitle("c. WINDm")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+plot(p2)
