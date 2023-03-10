@@ -323,25 +323,25 @@ p6 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(
 p7 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=HYDROCm, fill=Type ))+geom_jitter(aes(x=Type, y=HYDROCm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROCm (minutes)")+xlab("Type")+ggtitle("h. HYDROCm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WETm boxplot
-p8 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=WETm, fill=Type ))+geom_jitter(aes(x=Type, y=WETm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETm (minutes)")+xlab("Type")+ggtitle("i. WETm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p8 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=WETm, fill=Type ))+geom_jitter(aes(x=Type, y=WETm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETm (minutes)")+xlab("Type")+ggtitle("i. WETm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none") 
 
 ## Create the GEOLEm boxplot
-p9 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=GEOLEm, fill=Type ))+geom_jitter(aes(x=Type, y=GEOLEm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLEm (m.)")+xlab("Type")+ggtitle("a. GEOLEm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p9 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=GEOLEm, fill=Type ))+geom_jitter(aes(x=Type, y=GEOLEm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLEm (m.)")+xlab("Type")+ggtitle("a. GEOLEm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")
 
 ## Create the GEOLCm boxplot
 p10 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=GEOLCm, fill=Type ))+geom_jitter(aes(x=Type, y=GEOLCm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLCm (minutes)")+xlab("Type")+ggtitle("b. GEOLCm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the VISPRm boxplot
-p11 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=VISPRm, fill=Type ))+geom_jitter(aes(x=Type, y=VISPRm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPRm")+xlab("Type")+ggtitle("c. VISPRm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p11 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=VISPRm, fill=Type ))+geom_jitter(aes(x=Type, y=VISPRm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPRm")+xlab("Type")+ggtitle("c. VISPRm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none") 
 
 ## Create the LCPCm boxplot
-p12 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=LCPCm, fill=Type ))+geom_jitter(aes(x=Type, y=LCPCm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPCm (minutes)")+xlab("Type")+ggtitle("d. LCPCm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p12 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=LCPCm, fill=Type ))+geom_jitter(aes(x=Type, y=LCPCm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPCm (minutes)")+xlab("Type")+ggtitle("d. LCPCm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none") 
 
 ## Create the TOTINSm boxplot
-p13 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=TOTINSm, fill=Type ))+geom_jitter(aes(x=Type, y=TOTINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINSm")+xlab("Type")+ggtitle("e. TOTINSm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p13 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=TOTINSm, fill=Type ))+geom_jitter(aes(x=Type, y=TOTINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINSm")+xlab("Type")+ggtitle("e. TOTINSm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")
 
 ## Create the DIRINSm boxplot
-p14 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=DIRINSm, fill=Type ))+geom_jitter(aes(x=Type, y=DIRINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINSm")+xlab("Type")+ggtitle("f. DIRINSm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p14 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=DIRINSm, fill=Type ))+geom_jitter(aes(x=Type, y=DIRINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINSm")+xlab("Type")+ggtitle("f. DIRINSm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")
 
 ## Create the DIFINSm boxplot
 p15 <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=DIFINSm, fill=Type ))+geom_jitter(aes(x=Type, y=DIFINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINSm")+xlab("Type")+ggtitle("g. DIRINSm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
@@ -445,14 +445,126 @@ png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 ## Import files
 boxplot_northern_vs_central <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_northern_vs_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
 
-## Create the ALTrA boxplot
-p <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTrA, fill=Area ))+geom_jitter(aes(x=Area, y=ALTrA,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTrA")+xlab("Area")+ggtitle("a. ALTrA")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
-plot(p)
+## Create the ALTA boxplot
+p <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTA, fill=Area ))+geom_jitter(aes(x=Area, y=ALTA,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTA (m.a.s.l.)")+xlab("Area")+ggtitle("a. ALTA for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the ALTm boxplot
+p1 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTm, fill=Area ))+geom_jitter(aes(x=Area, y=ALTm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTm (m.a.s.l.)")+xlab("Area")+ggtitle("b. ALTm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")
+
+## Create the TPI100 boxplot
+p2 <- ggplot(data = boxplot_northern_vs_central, col=c(123,234))+geom_boxplot(aes(x=Area, y=TPI100, fill=Area ))+geom_jitter(aes(x=Area, y=TPI100,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI100")+xlab("Area")+ggtitle("c. TPI100 for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the TPI100m boxplot
-p1 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TPI100m, fill=Area ))+geom_jitter(aes(x=Area, y=TPI100m,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI100m")+xlab("Area")+ggtitle("b. TPI100m")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
-plot(p1)
+p3 <- ggplot(data = boxplot_northern_vs_central, col=c(123,234))+geom_boxplot(aes(x=Area, y=TPI100m, fill=Area ))+geom_jitter(aes(x=Area, y=TPI100m,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI100m")+xlab("Area")+ggtitle("d. TPI100m for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
-## Create the WINDm boxplot
-p2 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WINDm, fill=Area ))+geom_jitter(aes(x=Area, y=WINDm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WINDm")+xlab("Area")+ggtitle("c. WINDm")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
-plot(p2)
+## Create the TPI500 boxplot
+p4 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TPI500, fill=Area ))+geom_jitter(aes(x=Area, y=TPI500,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI500")+xlab("Area")+ggtitle("e. TPI500 for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TPI500m boxplot
+p5 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TPI500m, fill=Area ))+geom_jitter(aes(x=Area, y=TPI500m,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI500m")+xlab("Area")+ggtitle("f. TPI500m for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TPI1000 boxplot
+p6 <- ggplot(data = boxplot_northern_vs_central, col=c(123,234))+geom_boxplot(aes(x=Area, y=TPI1000, fill=Area ))+geom_jitter(aes(x=Area, y=TPI1000,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI1000")+xlab("Area")+ggtitle("g. TPI1000 for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TPI1000m boxplot
+p7 <- ggplot(data = boxplot_northern_vs_central, col=c(123,234))+geom_boxplot(aes(x=Area, y=TPI1000m, fill=Area ))+geom_jitter(aes(x=Area, y=TPI1000m,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI1000m")+xlab("Area")+ggtitle("h. TPI1000m for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the ALTrA boxplot
+p8 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTrA, fill=Area ))+geom_jitter(aes(x=Area, y=ALTrA,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTrA")+xlab("Area")+ggtitle("i. ALTrA for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the ALTrB boxplot
+p9 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTrB, fill=Area ))+geom_jitter(aes(x=Area, y=ALTrB,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTrB")+xlab("Area")+ggtitle("j. ALTrB for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the SLO boxplot
+p10 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLO, fill=Area ))+geom_jitter(aes(x=Area, y=SLO,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLO")+xlab("Area")+ggtitle("a. SLO for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the SLOm boxplot
+p11 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLOm, fill=Area ))+geom_jitter(aes(x=Area, y=SLOm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOm")+xlab("Area")+ggtitle("b. SLOm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the SLOga boxplot
+p12 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLOga, fill=Area ))+geom_jitter(aes(x=Area, y=SLOga,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOga")+xlab("Area")+ggtitle("c. SLOga for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the SLOt boxplot
+p13 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLOt, fill=Area ))+geom_jitter(aes(x=Area, y=SLOt,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOt")+xlab("Area")+ggtitle("d. SLOt for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the SLOst boxplot
+p14 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLOst, fill=Area ))+geom_jitter(aes(x=Area, y=SLOst,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOst")+xlab("Area")+ggtitle("e. SLOst for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the SLOpi boxplot
+p15 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLOpi, fill=Area ))+geom_jitter(aes(x=Area, y=SLOpi,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOpi")+xlab("Area")+ggtitle("f. SLOpi for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the INCr45-15 boxplot
+p16 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=INCr45.15, fill=Area ))+geom_jitter(aes(x=Area, y=INCr45.15,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("INCr45-15")+xlab("Area")+ggtitle("g. INCr45-15 for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the ASP boxplot
+p17 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ASP, fill=Area ))+geom_jitter(aes(x=Area, y=ASP,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ASP")+xlab("Area")+ggtitle("a. ASP for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the ASPm boxplot
+p18 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ASPm, fill=Area ))+geom_jitter(aes(x=Area, y=ASPm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ASPm")+xlab("Area")+ggtitle("b. ASPm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the HYDROE boxplot
+p19 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROE, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROE,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROE")+xlab("Area")+ggtitle("a. HYDROE for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the HYDROEm boxplot
+p20 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROEm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROEm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROEm")+xlab("Area")+ggtitle("b. HYDROEm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the HYDROC boxplot
+p21 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROC, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROC")+xlab("Area")+ggtitle("c. HYDROC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the HYDROCm boxplot
+p22 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROCm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROCm")+xlab("Area")+ggtitle("d. HYDROCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the HYDROV boxplot
+p23 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROV, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROV (m2)")+xlab("Area")+ggtitle("e. HYDROV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the WET boxplot
+p24 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WET, fill=Area ))+geom_jitter(aes(x=Area, y=WET,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WET")+xlab("Area")+ggtitle("f. WET for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the WETm boxplot
+p25 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETm, fill=Area ))+geom_jitter(aes(x=Area, y=WETm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETm")+xlab("Area")+ggtitle("g. WETm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the WETv boxplot
+p26 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETv, fill=Area ))+geom_jitter(aes(x=Area, y=WETv,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETv (m2)")+xlab("Area")+ggtitle("h. WETv for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the GEOLE boxplot
+p27 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLE, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLE,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLE")+xlab("Area")+ggtitle("a. GEOLE for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the GEOLEm boxplot
+p28 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLEm, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLEm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLEm")+xlab("Area")+ggtitle("b. GEOLEm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the GEOLC boxplot
+p29 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLC, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLC")+xlab("Area")+ggtitle("c. GEOLC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the GEOLCm boxplot
+p30 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLCm, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLCm")+xlab("Area")+ggtitle("d. GEOLCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the GEOLV boxplot
+p31 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLV, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLV (m2)")+xlab("Area")+ggtitle("e. GEOLV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+
+## create Figure X
+(p | p1 | p2) /
+(p3 | p4 | p5) /
+(p6 | p7 | p8)/
+(p9 | guide_area()| guide_area())
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p10 | p11 | p12) /
+(p13 | p14 | p15) /
+(p16 | guide_area()| guide_area())
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p17 | p18 | guide_area())
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p19 | p20 | p21) /
+(p22 | p23 | p24) /
+(p25 | p26| guide_area())
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
