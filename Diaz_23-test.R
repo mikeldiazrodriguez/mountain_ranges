@@ -568,3 +568,9 @@ png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 (p25 | p26| guide_area())
 
 png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p27 | p28 | p29) /
+(p30 | p31 | guide_area())
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
