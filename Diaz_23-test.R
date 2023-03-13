@@ -527,16 +527,16 @@ p25 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 p26 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETv, fill=Area ))+geom_jitter(aes(x=Area, y=WETv,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETv (m2)")+xlab("Area")+ggtitle("h. WETv for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLE boxplot
-p27 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLE, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLE,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLE")+xlab("Area")+ggtitle("a. GEOLE for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p27 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLE, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLE,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLE (m.)")+xlab("Area")+ggtitle("a. GEOLE for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLEm boxplot
-p28 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLEm, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLEm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLEm")+xlab("Area")+ggtitle("b. GEOLEm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p28 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLEm, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLEm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLEm (m.)")+xlab("Area")+ggtitle("b. GEOLEm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLC boxplot
-p29 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLC, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLC")+xlab("Area")+ggtitle("c. GEOLC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p29 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLC, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLC (seconds)")+xlab("Area")+ggtitle("c. GEOLC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLCm boxplot
-p30 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLCm, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLCm")+xlab("Area")+ggtitle("d. GEOLCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p30 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLCm, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLCm (seconds)")+xlab("Area")+ggtitle("d. GEOLCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLV boxplot
 p31 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLV, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLV (m2)")+xlab("Area")+ggtitle("e. GEOLV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
@@ -595,7 +595,7 @@ p48 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 ## Create the WINDm boxplot
 p49 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WINDm, fill=Area ))+geom_jitter(aes(x=Area, y=WINDm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WINDm")+xlab("Area")+ggtitle("b. WINDm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
-## create Figure X
+## create Figure X (Altitude)
 (p | p1 | p2) /
 (p3 | p4 | p5) /
 (p6 | p7 | p8)/
@@ -603,55 +603,55 @@ p49 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 
 png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 
-## create Figure X
+## create Figure X (Slope)
 (p10 | p11 | p12) /
 (p13 | p14 | p15) /
 (p16 | guide_area()| guide_area())
 
 png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 
-## create Figure X
+## create Figure X (Aspect)
 (p17 | p18)
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+png(file = "~/figures/FigureX.png",width = 2000,height = 1000)
 
-## create Figure X
+## create Figure X (hydrology)
 (p19 | p20 | p21) /
 (p22 | p23 | p24) /
 (p25 | p26| guide_area())
 
 png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 
-## create Figure X
+## create Figure X (geology)
 (p27 | p28 | p29) /
 (p30 | p31 | guide_area())
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
 
-## create Figure X
+## create Figure X (biotic)
 (p32 | p33 | p34) /
 (p35 | guide_area() | guide_area())
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
 
-## create Figure X
+## create Figure X (visibility)
 (p36 | p37 | p38) /
 (p39 | guide_area() | guide_area())
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
 
-## create Figure X
+## create Figure X (lcpc)
 (p40 | p41)
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+png(file = "~/figures/FigureX.png",width = 2000,height = 1000)
 
-## create Figure X
+## create Figure X (insolation)
 (p42 | p43 | p44) /
 (p45 | p46 | p47)
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
 
-## create Figure X
+## create Figure X (wind)
 (p48 | p49)
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+png(file = "~/figures/FigureX.png",width = 2000,height = 1000)
