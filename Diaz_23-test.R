@@ -541,6 +541,18 @@ p30 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 ## Create the GEOLV boxplot
 p31 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLV, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLV (m2)")+xlab("Area")+ggtitle("e. GEOLV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
+## Create the CPFPCGs boxplot
+p32 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCGs, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCGs,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCGs (m2)")+xlab("Area")+ggtitle("a. CPFPCGs for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the CPFPCDs boxplot
+p33 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDs, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDs,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDs (m2)")+xlab("Area")+ggtitle("b. CPFPCDs for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the CPFPCGc boxplot
+p34 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCGc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCGc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCGc (seconds)")+xlab("Area")+ggtitle("c. CPFPCGc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the CPFPCDc boxplot
+p35 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDc (seconds)")+xlab("Area")+ggtitle("d. CPFPCDc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
 
 ## create Figure X
 (p | p1 | p2) /
@@ -572,5 +584,11 @@ png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 ## create Figure X
 (p27 | p28 | p29) /
 (p30 | p31 | guide_area())
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p32 | p33 | p34) /
+(p35 | guide_area() | guide_area())
 
 png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
