@@ -553,6 +553,47 @@ p34 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 ## Create the CPFPCDc boxplot
 p35 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDc (seconds)")+xlab("Area")+ggtitle("d. CPFPCDc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
+## Create the VISC boxplot
+p36 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISC, fill=Area ))+geom_jitter(aes(x=Area, y=VISC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISC (m2)")+xlab("Area")+ggtitle("a. VISC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the VISZ boxplot
+p37 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISZ, fill=Area ))+geom_jitter(aes(x=Area, y=VISZ,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISZ (m2)")+xlab("Area")+ggtitle("b. VISZ for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the VISPR boxplot
+p38 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISPR, fill=Area ))+geom_jitter(aes(x=Area, y=VISPR,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPR")+xlab("Area")+ggtitle("c. VISPR for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the VISPRm boxplot
+p39 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISPRm, fill=Area ))+geom_jitter(aes(x=Area, y=VISPRm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPRm")+xlab("Area")+ggtitle("d. VISPRm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the LCPC boxplot
+p40 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=LCPC, fill=Area ))+geom_jitter(aes(x=Area, y=LCPC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPC (seconds)")+xlab("Area")+ggtitle("a. LCPC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the LCPCm boxplot
+p41 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=LCPCm, fill=Area ))+geom_jitter(aes(x=Area, y=LCPCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPCm (seconds)")+xlab("Area")+ggtitle("b. LCPCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TOTINS boxplot
+p42 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TOTINS, fill=Area ))+geom_jitter(aes(x=Area, y=TOTINS,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINS")+xlab("Area")+ggtitle("a. TOTINS for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the TOTINSm boxplot
+p43 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TOTINSm, fill=Area ))+geom_jitter(aes(x=Area, y=TOTINSm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINSm")+xlab("Area")+ggtitle("b. TOTINSm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the DIRINS boxplot
+p44 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIRINS, fill=Area ))+geom_jitter(aes(x=Area, y=DIRINS,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINS")+xlab("Area")+ggtitle("c. DIRINS for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the DIRINSm boxplot
+p45 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIRINSm, fill=Area ))+geom_jitter(aes(x=Area, y=DIRINSm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINSm")+xlab("Area")+ggtitle("d. DIRINSm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the DIFINS boxplot
+p46 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIFINS, fill=Area ))+geom_jitter(aes(x=Area, y=DIFINS,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINS")+xlab("Area")+ggtitle("e. DIFINS for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the DIFINSm boxplot
+p47 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIFINSm, fill=Area ))+geom_jitter(aes(x=Area, y=DIFINSm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINSm")+xlab("Area")+ggtitle("f. DIFINSm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the WIND boxplot
+p48 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WIND, fill=Area ))+geom_jitter(aes(x=Area, y=WIND,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WIND")+xlab("Area")+ggtitle("a. WIND for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+
+## Create the WINDm boxplot
+p49 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WINDm, fill=Area ))+geom_jitter(aes(x=Area, y=WINDm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WINDm")+xlab("Area")+ggtitle("b. WINDm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## create Figure X
 (p | p1 | p2) /
@@ -570,7 +611,7 @@ png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 
 ## create Figure X
-(p17 | p18 | guide_area())
+(p17 | p18)
 
 png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 
@@ -590,5 +631,27 @@ png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 ## create Figure X
 (p32 | p33 | p34) /
 (p35 | guide_area() | guide_area())
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p36 | p37 | p38) /
+(p39 | guide_area() | guide_area())
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p40 | p41)
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p42 | p43 | p44) /
+(p45 | p46 | p47)
+
+png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+
+## create Figure X
+(p48 | p49)
 
 png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
