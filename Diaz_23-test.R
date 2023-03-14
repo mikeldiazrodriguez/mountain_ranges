@@ -298,6 +298,9 @@ levels(boxplot_variables_northern$Type)
 boxplot_variables_northern$Type = factor(boxplot_variables_northern$Type, levels=c("Sites", "Random sites"))
 levels(boxplot_variables_northern$Type)
 
+## Delete the grey theme
+theme_set(theme_bw())
+
 ## Create the ALTm boxplot
 p <- ggplot(data = boxplot_variables_northern,col=c(123,234))+geom_boxplot(aes(x=Type, y=ALTm, fill=Type ))+geom_jitter(aes(x=Type, y=ALTm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTm (m.a.s.l.)")+xlab("Type")+ggtitle("a. ALTm in Northern Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")
 
@@ -503,19 +506,19 @@ p17 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 p18 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ASPm, fill=Area ))+geom_jitter(aes(x=Area, y=ASPm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ASPm")+xlab("Area")+ggtitle("b. ASPm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROE boxplot
-p19 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROE, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROE,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROE")+xlab("Area")+ggtitle("a. HYDROE for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p19 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROE, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROE,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROE (m.)")+xlab("Area")+ggtitle("a. HYDROE for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROEm boxplot
-p20 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROEm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROEm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROEm")+xlab("Area")+ggtitle("b. HYDROEm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p20 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROEm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROEm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROEm (m.)")+xlab("Area")+ggtitle("b. HYDROEm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROC boxplot
-p21 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROC, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROC")+xlab("Area")+ggtitle("c. HYDROC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p21 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROC, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROC (minutes)")+xlab("Area")+ggtitle("c. HYDROC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROCm boxplot
-p22 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROCm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROCm")+xlab("Area")+ggtitle("d. HYDROCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p22 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROCm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROCm (minutes)")+xlab("Area")+ggtitle("d. HYDROCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROV boxplot
-p23 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROV, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROV (m2)")+xlab("Area")+ggtitle("e. HYDROV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p23 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROV, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROV (Ha)")+xlab("Area")+ggtitle("e. HYDROV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WET boxplot
 p24 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WET, fill=Area ))+geom_jitter(aes(x=Area, y=WET,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WET")+xlab("Area")+ggtitle("f. WET for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
