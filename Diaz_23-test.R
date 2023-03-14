@@ -634,7 +634,7 @@ png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
 ## create Figure X (biotic)
 (p32 | p33 | p34)
 
-png(file = "~/figures/FigureX.png",width = 1500,height = 1000)
+png(file = "~/figures/FigureX.png",width = 1500,height = 1200)
 
 ## create Figure X (visibility)
 (p36 | p37 | p38) /
