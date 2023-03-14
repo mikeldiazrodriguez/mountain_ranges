@@ -518,16 +518,16 @@ p21 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 p22 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROCm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROCm (minutes)")+xlab("Area")+ggtitle("d. HYDROCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROV boxplot
-p23 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROV, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROV (Ha)")+xlab("Area")+ggtitle("e. HYDROV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p23 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROV, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROV (ha)")+xlab("Area")+ggtitle("e. HYDROV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WET boxplot
-p24 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WET, fill=Area ))+geom_jitter(aes(x=Area, y=WET,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WET")+xlab("Area")+ggtitle("f. WET for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p24 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WET, fill=Area ))+geom_jitter(aes(x=Area, y=WET,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WET (minutes)")+xlab("Area")+ggtitle("f. WET for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WETm boxplot
-p25 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETm, fill=Area ))+geom_jitter(aes(x=Area, y=WETm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETm")+xlab("Area")+ggtitle("g. WETm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p25 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETm, fill=Area ))+geom_jitter(aes(x=Area, y=WETm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETm (minutes)")+xlab("Area")+ggtitle("g. WETm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WETv boxplot
-p26 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETv, fill=Area ))+geom_jitter(aes(x=Area, y=WETv,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETv (m2)")+xlab("Area")+ggtitle("h. WETv for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p26 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETv, fill=Area ))+geom_jitter(aes(x=Area, y=WETv,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETv (ha)")+xlab("Area")+ggtitle("h. WETv for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLE boxplot
 p27 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLE, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLE,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLE (m.)")+xlab("Area")+ggtitle("a. GEOLE for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
@@ -536,31 +536,31 @@ p27 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 p28 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLEm, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLEm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLEm (m.)")+xlab("Area")+ggtitle("b. GEOLEm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLC boxplot
-p29 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLC, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLC (seconds)")+xlab("Area")+ggtitle("c. GEOLC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p29 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLC, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLC (minutes)")+xlab("Area")+ggtitle("c. GEOLC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLCm boxplot
-p30 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLCm, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLCm (seconds)")+xlab("Area")+ggtitle("d. GEOLCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p30 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLCm, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLCm (minutes)")+xlab("Area")+ggtitle("d. GEOLCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLV boxplot
-p31 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLV, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLV (m2)")+xlab("Area")+ggtitle("e. GEOLV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p31 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLV, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLV (ha)")+xlab("Area")+ggtitle("e. GEOLV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the CPFPCGs boxplot
-p32 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCGs, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCGs,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCGs (m2)")+xlab("Area")+ggtitle("a. CPFPCGs for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p32 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCGs, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCGs,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCGs (ha)")+xlab("Area")+ggtitle("a. CPFPCGs for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the CPFPCDs boxplot
-p33 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDs, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDs,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDs (m2)")+xlab("Area")+ggtitle("b. CPFPCDs for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p33 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDs, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDs,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDs (ha)")+xlab("Area")+ggtitle("b. CPFPCDs for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the CPFPCGc boxplot
-p34 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCGc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCGc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCGc (seconds)")+xlab("Area")+ggtitle("c. CPFPCGc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p34 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCGc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCGc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCGc (minutes)")+xlab("Area")+ggtitle("c. CPFPCGc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the CPFPCDc boxplot
-p35 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDc (seconds)")+xlab("Area")+ggtitle("d. CPFPCDc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p35 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDc (minutes)")+xlab("Area")+ggtitle("d. CPFPCDc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the VISC boxplot
-p36 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISC, fill=Area ))+geom_jitter(aes(x=Area, y=VISC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISC (m2)")+xlab("Area")+ggtitle("a. VISC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p36 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISC, fill=Area ))+geom_jitter(aes(x=Area, y=VISC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISC (ha)")+xlab("Area")+ggtitle("a. VISC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the VISZ boxplot
-p37 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISZ, fill=Area ))+geom_jitter(aes(x=Area, y=VISZ,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISZ (m2)")+xlab("Area")+ggtitle("b. VISZ for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p37 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISZ, fill=Area ))+geom_jitter(aes(x=Area, y=VISZ,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISZ (ha)")+xlab("Area")+ggtitle("b. VISZ for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the VISPR boxplot
 p38 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISPR, fill=Area ))+geom_jitter(aes(x=Area, y=VISPR,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPR")+xlab("Area")+ggtitle("c. VISPR for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
@@ -569,10 +569,10 @@ p38 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 p39 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISPRm, fill=Area ))+geom_jitter(aes(x=Area, y=VISPRm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPRm")+xlab("Area")+ggtitle("d. VISPRm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the LCPC boxplot
-p40 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=LCPC, fill=Area ))+geom_jitter(aes(x=Area, y=LCPC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPC (seconds)")+xlab("Area")+ggtitle("a. LCPC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p40 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=LCPC, fill=Area ))+geom_jitter(aes(x=Area, y=LCPC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPC (minutes)")+xlab("Area")+ggtitle("a. LCPC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the LCPCm boxplot
-p41 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=LCPCm, fill=Area ))+geom_jitter(aes(x=Area, y=LCPCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPCm (seconds)")+xlab("Area")+ggtitle("b. LCPCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p41 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=LCPCm, fill=Area ))+geom_jitter(aes(x=Area, y=LCPCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPCm (minutes)")+xlab("Area")+ggtitle("b. LCPCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the TOTINS boxplot
 p42 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TOTINS, fill=Area ))+geom_jitter(aes(x=Area, y=TOTINS,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINS")+xlab("Area")+ggtitle("a. TOTINS for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
@@ -632,10 +632,9 @@ png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
 
 ## create Figure X (biotic)
-(p32 | p33 | p34) /
-(p35 | guide_area() | guide_area())
+(p32 | p33 | p34)
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
+png(file = "~/figures/FigureX.png",width = 1500,height = 1000)
 
 ## create Figure X (visibility)
 (p36 | p37 | p38) /
