@@ -163,8 +163,8 @@ dev.off()
 setwd("C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/grids")
 
 ## Import variables and set the same extent for everyone
-elevation <- raster("dem-northern.tif")
-elevation_central <- raster("dem-central.tif")
+elevation <- raster("ALTA_northern.tif")
+elevation_central <- raster("ALTA_central.tif")
 
 ## Extract cell site elevations from the Northern area
 sites_northern_spdf <- SpatialPointsDataFrame(sites_northern, data.frame(sites_northern))
@@ -174,13 +174,20 @@ sites_northern$`Elevation (m)` <-
   raster::extract(elevation, 
                   sites_northern_spdf)
 
+## Delete the grey theme
+theme_set(theme_bw())
+
+## Obtain the mean to used it in the next step
+cellStats(elevation,mean)
+
+
 ## Calculate the sites densities for Northern area
 sites_northern_densities <- sites_northern %$%
   elevation %>%
-  density(from = 53, to = 1054, n = 1001) %>%
+  density(from = 53, to = 1054, n = 550) %>%
   broom::tidy() %>%
   tibble::as_tibble() %>%
-  dplyr::mutate(y = y * 1001) %>%
+  dplyr::mutate(y = y * 550) %>%
   dplyr::rename(Elevation = x,
                 Frequency = y)
 
@@ -194,10 +201,10 @@ background_altitude_densities <- foreach::foreach(n = 1:999, .combine = rbind) %
   background_altitude_values %>%
     sample(nrow(sites_northern),
            replace = FALSE) %>%
-    density(from = 53, to = 1054, n = 1001) %>%
+    density(from = 53, to = 1054, n = 550) %>%
     broom::tidy() %>%
     tibble::as_tibble() %>%
-    dplyr::mutate(y = y * 1001)
+    dplyr::mutate(y = y * 550)
 } %>%
   dplyr::group_by(x) %>%
   purrrlyr::by_slice(function(x){
@@ -220,7 +227,7 @@ ggplot() +
   geom_line(data = sites_northern_densities,
             mapping = aes(x = Elevation,
                           y = Frequency),
-            color = "red")
+            color = "red") +ggtitle("a. ALTA in Northern Mountain ranges")
 
 
 
@@ -233,13 +240,17 @@ sites_central$`Elevation (m)` <-
   raster::extract(elevation_central, 
                   sites_central_spdf)
 
+## Obtain the mean to used it in the next step
+cellStats(elevation_central,mean)
+
+
 ## Calculate the sites densities for Northern area
 sites_central_densities <- sites_central %$%
   elevation_central %>%
-  density(from = 245, to = 834, n = 589) %>%
+  density(from = 245, to = 834, n = 515) %>%
   broom::tidy() %>%
   tibble::as_tibble() %>%
-  dplyr::mutate(y = y * 589) %>%
+  dplyr::mutate(y = y * 515) %>%
   dplyr::rename(Elevation = x,
                 Frequency = y)
 
@@ -253,10 +264,10 @@ background_altitude_densities <- foreach::foreach(n = 1:999, .combine = rbind) %
   background_altitude_values %>%
     sample(nrow(sites_central),
            replace = FALSE) %>%
-    density(from = 245, to = 834, n = 589) %>%
+    density(from = 245, to = 834, n = 515) %>%
     broom::tidy() %>%
     tibble::as_tibble() %>%
-    dplyr::mutate(y = y * 1001)
+    dplyr::mutate(y = y * 515)
 } %>%
   dplyr::group_by(x) %>%
   purrrlyr::by_slice(function(x){
@@ -279,7 +290,7 @@ ggplot() +
   geom_line(data = sites_central_densities,
             mapping = aes(x = Elevation,
                           y = Frequency),
-            color = "red")
+            color = "red") +ggtitle("a. ALTA variable in Central Mountain ranges")
 
 
 
