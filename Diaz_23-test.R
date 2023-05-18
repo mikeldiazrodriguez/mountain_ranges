@@ -668,3 +668,164 @@ png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
 (p48 | p49)
 
 png(file = "~/figures/FigureX.png",width = 2000,height = 1000)
+
+
+
+## Statistic tests
+## Import files
+variables_northern <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/table_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+## Check normality (Shapiro-Wilk Test)
+### ALTA
+shapiro.test(variables_northern$ALTA)
+
+### ALTm
+shapiro.test(variables_northern$ALTm)
+
+### TPI100
+shapiro.test(variables_northern$TPI100)
+
+### TPI100m
+shapiro.test(variables_northern$TPI100m)
+
+### TPI500
+shapiro.test(variables_northern$TPI500)
+
+### TPI500m
+shapiro.test(variables_northern$TPI500m)
+
+### TPI1000
+shapiro.test(variables_northern$TPI1000)
+
+### TPI1000m
+shapiro.test(variables_northern$TPI1000m)
+
+## ALTrA
+shapiro.test(variables_northern$ALTrA)
+
+## ALTrB
+shapiro.test(variables_northern$ALTrB)
+
+## SLO
+shapiro.test(variables_northern$SLO)
+
+## SLOm
+shapiro.test(variables_northern$SLOm)
+
+## SLOga
+shapiro.test(variables_northern$SLOga)
+
+## SLOt
+shapiro.test(variables_northern$SLOt)
+
+## SLOst
+shapiro.test(variables_northern$SLOst)
+
+## SLOpi
+shapiro.test(variables_northern$SLOpi)
+
+## INCr45.15
+shapiro.test(variables_northern$INCr45.15)
+
+## ASP
+shapiro.test(variables_northern$ASP)
+
+## ASPm
+shapiro.test(variables_northern$ASPm)
+
+## HYDROE
+shapiro.test(variables_northern$HYDROE)
+
+## HYDROEm
+shapiro.test(variables_northern$HYDROEm)
+
+## HYDROC
+shapiro.test(variables_northern$HYDROC)
+
+## HYDROCm
+shapiro.test(variables_northern$HYDROCm)
+
+## HYDROV
+shapiro.test(variables_northern$HYDROV)
+
+## WET
+shapiro.test(variables_northern$WET)
+
+## WETm
+shapiro.test(variables_northern$WETm)
+
+## WETv
+shapiro.test(variables_northern$WETv)
+
+## GEOLE
+shapiro.test(variables_northern$GEOLE)
+
+## GEOLEm
+shapiro.test(variables_northern$GEOLEm)
+
+## GEOLC
+shapiro.test(variables_northern$GEOLC)
+
+## GEOLCm
+shapiro.test(variables_northern$GEOLCm)
+
+## GEOLV
+shapiro.test(variables_northern$GEOLV)
+
+## CPFPCGs
+shapiro.test(variables_northern$GCPFPCGs)
+
+## CPFPCDs
+shapiro.test(variables_northern$GCPFPCDs)
+
+## CPFPCGc
+shapiro.test(variables_northern$GCPFPCGc)
+
+## CPFPCGDc
+shapiro.test(variables_northern$GCPFPCDc)
+
+## VISC
+shapiro.test(variables_northern$VISC)
+
+## VISZ
+shapiro.test(variables_northern$VISZ)
+
+## VISPR
+shapiro.test(variables_northern$VISPR)
+
+## VISPRm
+shapiro.test(variables_northern$VISPRm)
+
+## LCPC
+shapiro.test(variables_northern$LCPC)
+
+## LCPCm
+shapiro.test(variables_northern$LCPCm)
+
+## TOTINS
+shapiro.test(variables_northern$TOTINSm)
+
+## DIRINS
+shapiro.test(variables_northern$DIRINS)
+
+## DIRINSm
+shapiro.test(variables_northern$DIRINSm)
+
+## DIFINS
+shapiro.test(variables_northern$DIFINS)
+
+## DIFINSm
+shapiro.test(variables_northern$DIFINSm)
+
+## WIND
+shapiro.test(variables_northern$WIND)
+
+## WINDm
+shapiro.test(variables_northern$WINDm)
+
+
+## Import files
+fisher_northern <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+## Check homoscedasticity (Fisher Test)
+var.test(fisher_northern$ALTA ~ fisher_northern$Type, alternative='two.sided')
