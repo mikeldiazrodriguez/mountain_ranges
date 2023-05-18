@@ -8,7 +8,7 @@ ipak <- function(pkg){
   sapply(pkg, require, character.only = TRUE)
 }
 # usage
-packages <- c("GGally", "readxl", "rgdal", "rgeos", "sp", "spatstat", "tidyverse", "dismo", "MASS", "ggplot2", "plyr", "maps", "maptools", "raster", "geostatsp", "patchwork", "foreach")
+packages <- c("GGally", "readxl", "rgdal", "rgeos", "sp", "spatstat", "tidyverse", "dismo", "MASS", "ggplot2", "plyr", "maps", "maptools", "raster", "geostatsp", "patchwork", "foreach", "purrrlyr")
 ipak(packages)
 
 
@@ -166,6 +166,10 @@ setwd("C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ra
 elevation <- raster("ALTA_northern.tif")
 elevation_central <- raster("ALTA_central.tif")
 
+TPI100_central <- raster("TPI100_central.asc")
+
+TPI500_central <- raster("TPI500_central.asc")
+
 ## Extract cell site elevations from the Northern area
 sites_northern_spdf <- SpatialPointsDataFrame(sites_northern, data.frame(sites_northern))
 
@@ -184,10 +188,10 @@ cellStats(elevation,mean)
 ## Calculate the sites densities for Northern area
 sites_northern_densities <- sites_northern %$%
   elevation %>%
-  density(from = 53, to = 1054, n = 550) %>%
+  density(from = 0, to = 1054, n = 34) %>% # n = number of individuals per sample
   broom::tidy() %>%
   tibble::as_tibble() %>%
-  dplyr::mutate(y = y * 550) %>%
+  dplyr::mutate(y = y * 34) %>%
   dplyr::rename(Elevation = x,
                 Frequency = y)
 
@@ -201,10 +205,10 @@ background_altitude_densities <- foreach::foreach(n = 1:999, .combine = rbind) %
   background_altitude_values %>%
     sample(nrow(sites_northern),
            replace = FALSE) %>%
-    density(from = 53, to = 1054, n = 550) %>%
+    density(from = 0, to = 1054, n = 34) %>%
     broom::tidy() %>%
     tibble::as_tibble() %>%
-    dplyr::mutate(y = y * 550)
+    dplyr::mutate(y = y * 34)
 } %>%
   dplyr::group_by(x) %>%
   purrrlyr::by_slice(function(x){
@@ -231,7 +235,7 @@ ggplot() +
 
 
 
-
+###### ELEVATION ######
 ## Extract cell site elevations from the Central area
 sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
 
@@ -240,17 +244,17 @@ sites_central$`Elevation (m)` <-
   raster::extract(elevation_central, 
                   sites_central_spdf)
 
-## Obtain the mean to used it in the next step
+## NO ### Obtain the mean to used it in the next step
 cellStats(elevation_central,mean)
 
 
 ## Calculate the sites densities for Northern area
 sites_central_densities <- sites_central %$%
   elevation_central %>%
-  density(from = 245, to = 834, n = 515) %>%
+  density(from = 0, to = 900, n = 34) %>%
   broom::tidy() %>%
   tibble::as_tibble() %>%
-  dplyr::mutate(y = y * 515) %>%
+  dplyr::mutate(y = y * 34) %>%
   dplyr::rename(Elevation = x,
                 Frequency = y)
 
@@ -264,10 +268,10 @@ background_altitude_densities <- foreach::foreach(n = 1:999, .combine = rbind) %
   background_altitude_values %>%
     sample(nrow(sites_central),
            replace = FALSE) %>%
-    density(from = 245, to = 834, n = 515) %>%
+    density(from = 0, to = 900, n = 34) %>%
     broom::tidy() %>%
     tibble::as_tibble() %>%
-    dplyr::mutate(y = y * 515)
+    dplyr::mutate(y = y * 34)
 } %>%
   dplyr::group_by(x) %>%
   purrrlyr::by_slice(function(x){
@@ -293,6 +297,131 @@ ggplot() +
             color = "red") +ggtitle("a. ALTA variable in Central Mountain ranges")
 
 
+##### TPI100 #####
+
+## Extract cell site elevations from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`TPI100` <-  
+  raster::extract(TPI100_central, 
+                  sites_central_spdf)
+
+## Obtain the mean to used it in the next step
+cellStats(TPI100_central,mean)
+
+
+## Calculate the sites densities for Northern area
+sites_central_densities <- sites_central %$%
+  TPI100_central %>%
+  density(from = -19.6531, to = 19.1837, n = 34) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 34) %>%
+  dplyr::rename(TPI100 = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_TPI100_values <- TPI100_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 1000 random samples, and calculate their densities
+background_TPI100_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_TPI100_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = -19.6531, to = 19.1837, n = 34) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 34)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("TPI100", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_TPI100_densities,
+            mapping = aes(x = TPI100,
+                          y = Frequency)) +
+  geom_ribbon(data = background_TPI100_densities,
+              mapping = aes(x = TPI100,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = TPI100,
+                          y = Frequency),
+            color = "red") +ggtitle("b. TPI100 variable in Central Mountain ranges")
+
+
+
+##### TPI500 #####
+
+## Extract cell site elevations from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`TPI500` <-  
+  raster::extract(TPI500_central, 
+                  sites_central_spdf)
+
+## Obtain the mean to used it in the next step
+cellStats(TPI500_central,mean)
+
+
+## Calculate the sites densities for Northern area
+sites_central_densities <- sites_central %$%
+  TPI500_central %>%
+  density(from = -60.73590, to = 62.37790, n = 34) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 34) %>%
+  dplyr::rename(TPI500 = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_TPI500_values <- TPI500_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 1000 random samples, and calculate their densities
+background_TPI500_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_TPI500_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = -60.73590, to = 62.37790, n = 34) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 34)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("TPI500", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_TPI500_densities,
+            mapping = aes(x = TPI500,
+                          y = Frequency)) +
+  geom_ribbon(data = background_TPI500_densities,
+              mapping = aes(x = TPI500,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = TPI500,
+                          y = Frequency),
+            color = "red") +ggtitle("c. TPI500 variable in Central Mountain ranges")
 
 #Boxplot
 ## set the working directory
@@ -675,7 +804,7 @@ png(file = "~/figures/FigureX.png",width = 2000,height = 1000)
 ## Import files
 variables_northern <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/table_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
 
-## Check normality (Shapiro-Wilk Test)
+## Check normality in Northern area sites (Shapiro-Wilk Test)
 ### ALTA
 shapiro.test(variables_northern$ALTA)
 
@@ -773,16 +902,16 @@ shapiro.test(variables_northern$GEOLCm)
 shapiro.test(variables_northern$GEOLV)
 
 ## CPFPCGs
-shapiro.test(variables_northern$GCPFPCGs)
+shapiro.test(variables_northern$CPFPCGs)
 
 ## CPFPCDs
-shapiro.test(variables_northern$GCPFPCDs)
+shapiro.test(variables_northern$CPFPCDs)
 
 ## CPFPCGc
-shapiro.test(variables_northern$GCPFPCGc)
+shapiro.test(variables_northern$CPFPCGc)
 
 ## CPFPCGDc
-shapiro.test(variables_northern$GCPFPCDc)
+shapiro.test(variables_northern$CPFPCDc)
 
 ## VISC
 shapiro.test(variables_northern$VISC)
@@ -803,6 +932,166 @@ shapiro.test(variables_northern$LCPC)
 shapiro.test(variables_northern$LCPCm)
 
 ## TOTINS
+shapiro.test(variables_northern$TOTINS)
+
+## TOTINSm
+shapiro.test(variables_northern$TOTINSm)
+
+## DIRINS
+shapiro.test(variables_northern$DIRINS)
+
+## DIRINSm
+shapiro.test(variables_northern$DIRINSm)
+
+## DIFINS
+shapiro.test(variables_northern$DIFINS)
+
+## DIFINSm
+shapiro.test(variables_northern$DIFINSm)
+
+## WIND
+shapiro.test(variables_northern$WIND)
+
+## WINDm
+shapiro.test(variables_northern$WINDm)
+
+
+########### random sites ##################
+
+## Import files
+random_sites_northern <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/random_sites_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+## Check normality in Northern area random sites (Shapiro-Wilk Test)
+### ALTA
+shapiro.test(random_sites_northern$ALTA)
+
+### ALTm
+shapiro.test(variables_northern$ALTm)
+
+### TPI100
+shapiro.test(variables_northern$TPI100)
+
+### TPI100m
+shapiro.test(variables_northern$TPI100m)
+
+### TPI500
+shapiro.test(variables_northern$TPI500)
+
+### TPI500m
+shapiro.test(variables_northern$TPI500m)
+
+### TPI1000
+shapiro.test(variables_northern$TPI1000)
+
+### TPI1000m
+shapiro.test(variables_northern$TPI1000m)
+
+## ALTrA
+shapiro.test(variables_northern$ALTrA)
+
+## ALTrB
+shapiro.test(variables_northern$ALTrB)
+
+## SLO
+shapiro.test(variables_northern$SLO)
+
+## SLOm
+shapiro.test(variables_northern$SLOm)
+
+## SLOga
+shapiro.test(variables_northern$SLOga)
+
+## SLOt
+shapiro.test(variables_northern$SLOt)
+
+## SLOst
+shapiro.test(variables_northern$SLOst)
+
+## SLOpi
+shapiro.test(variables_northern$SLOpi)
+
+## INCr45.15
+shapiro.test(variables_northern$INCr45.15)
+
+## ASP
+shapiro.test(variables_northern$ASP)
+
+## ASPm
+shapiro.test(variables_northern$ASPm)
+
+## HYDROE
+shapiro.test(variables_northern$HYDROE)
+
+## HYDROEm
+shapiro.test(variables_northern$HYDROEm)
+
+## HYDROC
+shapiro.test(variables_northern$HYDROC)
+
+## HYDROCm
+shapiro.test(variables_northern$HYDROCm)
+
+## HYDROV
+shapiro.test(variables_northern$HYDROV)
+
+## WET
+shapiro.test(variables_northern$WET)
+
+## WETm
+shapiro.test(variables_northern$WETm)
+
+## WETv
+shapiro.test(variables_northern$WETv)
+
+## GEOLE
+shapiro.test(variables_northern$GEOLE)
+
+## GEOLEm
+shapiro.test(variables_northern$GEOLEm)
+
+## GEOLC
+shapiro.test(variables_northern$GEOLC)
+
+## GEOLCm
+shapiro.test(variables_northern$GEOLCm)
+
+## GEOLV
+shapiro.test(variables_northern$GEOLV)
+
+## CPFPCGs
+shapiro.test(variables_northern$CPFPCGs)
+
+## CPFPCDs
+shapiro.test(variables_northern$CPFPCDs)
+
+## CPFPCGc
+shapiro.test(variables_northern$CPFPCGc)
+
+## CPFPCGDc
+shapiro.test(variables_northern$CPFPCDc)
+
+## VISC
+shapiro.test(variables_northern$VISC)
+
+## VISZ
+shapiro.test(variables_northern$VISZ)
+
+## VISPR
+shapiro.test(variables_northern$VISPR)
+
+## VISPRm
+shapiro.test(variables_northern$VISPRm)
+
+## LCPC
+shapiro.test(variables_northern$LCPC)
+
+## LCPCm
+shapiro.test(variables_northern$LCPCm)
+
+## TOTINS
+shapiro.test(variables_northern$TOTINS)
+
+## TOTINSm
 shapiro.test(variables_northern$TOTINSm)
 
 ## DIRINS
@@ -828,4 +1117,6 @@ shapiro.test(variables_northern$WINDm)
 fisher_northern <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
 
 ## Check homoscedasticity (Fisher Test)
-var.test(fisher_northern$ALTA ~ fisher_northern$Type, alternative='two.sided')
+var.test(fisher_northern$ALTm ~ fisher_northern$Type, alternative='two.sided')
+
+t.test(ALTm ~ Type, data = fisher_northern)
