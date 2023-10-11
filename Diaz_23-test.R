@@ -516,6 +516,9 @@ levels(boxplot_variables_central$Type)
 boxplot_variables_central$Type = factor(boxplot_variables_central$Type, levels=c("Sites", "Random sites"))
 levels(boxplot_variables_central$Type)
 
+## Delete the grey theme
+theme_set(theme_bw())
+
 ## Create the ALTm boxplot
 p <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=ALTm, fill=Type ))+geom_jitter(aes(x=Type, y=ALTm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTm (m.a.s.l.)")+xlab("Type")+ggtitle("a. ALTm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")
 
@@ -562,7 +565,7 @@ p13 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(
 p14 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=DIRINSm, fill=Type ))+geom_jitter(aes(x=Type, y=DIRINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINSm")+xlab("Type")+ggtitle("f. DIRINSm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the DIFINSm boxplot
-p15 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=DIFINSm, fill=Type ))+geom_jitter(aes(x=Type, y=DIFINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINSm")+xlab("Type")+ggtitle("g. DIRINSm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p15 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=DIFINSm, fill=Type ))+geom_jitter(aes(x=Type, y=DIFINSm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINSm")+xlab("Type")+ggtitle("g. DIFINSm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WINDm boxplot
 p16 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(x=Type, y=WINDm, fill=Type ))+geom_jitter(aes(x=Type, y=WINDm,fill=Type),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WINDm")+xlab("Type")+ggtitle("h. WINDm in Central Mountain ranges")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
@@ -573,20 +576,23 @@ p16 <- ggplot(data = boxplot_variables_central,col=c(123,234))+geom_boxplot(aes(
 (p3 | p4 | p5) /
 (p6 | p7 | p8)
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+png(file = "~/figures/FigureX.png",width = 1506,height = 750)
 
 ## create Figure X
 (p9 | p10 | p11) /
 (p12 | p13 | p14)/
 (p15 | p16 | guide_area())
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+png(file = "~/figures/FigureX.png",width = 1506,height = 750)
 
 
 
 ## Northern Mountain ranges sites vs Central Mountain ranges sites
 ## Import files
 boxplot_northern_vs_central <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_northern_vs_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+## Delete the grey theme
+theme_set(theme_bw())
 
 ## Create the ALTA boxplot
 p <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTA, fill=Area ))+geom_jitter(aes(x=Area, y=ALTA,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTA (m.a.s.l.)")+xlab("Area")+ggtitle("a. ALTA for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
@@ -613,16 +619,16 @@ p6 <- ggplot(data = boxplot_northern_vs_central, col=c(123,234))+geom_boxplot(ae
 p7 <- ggplot(data = boxplot_northern_vs_central, col=c(123,234))+geom_boxplot(aes(x=Area, y=TPI1000m, fill=Area ))+geom_jitter(aes(x=Area, y=TPI1000m,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TPI1000m")+xlab("Area")+ggtitle("h. TPI1000m for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the ALTrA boxplot
-p8 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTrA, fill=Area ))+geom_jitter(aes(x=Area, y=ALTrA,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTrA")+xlab("Area")+ggtitle("i. ALTrA for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p8 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTrA, fill=Area ))+geom_jitter(aes(x=Area, y=ALTrA,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTrA")+xlab("Area")+ggtitle("a. ALTrA for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the ALTrB boxplot
-p9 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTrB, fill=Area ))+geom_jitter(aes(x=Area, y=ALTrB,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTrB")+xlab("Area")+ggtitle("j. ALTrB for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p9 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ALTrB, fill=Area ))+geom_jitter(aes(x=Area, y=ALTrB,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ALTrB")+xlab("Area")+ggtitle("b. ALTrB for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the SLO boxplot
-p10 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLO, fill=Area ))+geom_jitter(aes(x=Area, y=SLO,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLO")+xlab("Area")+ggtitle("a. SLO for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p10 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLO, fill=Area ))+geom_jitter(aes(x=Area, y=SLO,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLO")+xlab("Area")+ggtitle("i. SLO for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the SLOm boxplot
-p11 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLOm, fill=Area ))+geom_jitter(aes(x=Area, y=SLOm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOm")+xlab("Area")+ggtitle("b. SLOm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p11 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLOm, fill=Area ))+geom_jitter(aes(x=Area, y=SLOm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOm")+xlab("Area")+ggtitle("a. SLOm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the SLOga boxplot
 p12 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLOga, fill=Area ))+geom_jitter(aes(x=Area, y=SLOga,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOga")+xlab("Area")+ggtitle("c. SLOga for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
@@ -640,34 +646,34 @@ p15 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 p16 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=INCr45.15, fill=Area ))+geom_jitter(aes(x=Area, y=INCr45.15,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("INCr45-15")+xlab("Area")+ggtitle("g. INCr45-15 for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the ASP boxplot
-p17 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ASP, fill=Area ))+geom_jitter(aes(x=Area, y=ASP,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ASP")+xlab("Area")+ggtitle("a. ASP for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p17 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ASP, fill=Area ))+geom_jitter(aes(x=Area, y=ASP,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ASP")+xlab("Area")+ggtitle("b. ASP for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the ASPm boxplot
-p18 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ASPm, fill=Area ))+geom_jitter(aes(x=Area, y=ASPm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ASPm")+xlab("Area")+ggtitle("b. ASPm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p18 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ASPm, fill=Area ))+geom_jitter(aes(x=Area, y=ASPm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ASPm")+xlab("Area")+ggtitle("c. ASPm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROE boxplot
-p19 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROE, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROE,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROE (m.)")+xlab("Area")+ggtitle("a. HYDROE for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p19 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROE, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROE,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROE (m.)")+xlab("Area")+ggtitle("d. HYDROE for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROEm boxplot
-p20 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROEm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROEm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROEm (m.)")+xlab("Area")+ggtitle("b. HYDROEm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p20 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROEm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROEm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROEm (m.)")+xlab("Area")+ggtitle("e. HYDROEm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROC boxplot
-p21 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROC, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROC (minutes)")+xlab("Area")+ggtitle("c. HYDROC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p21 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROC, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROC (minutes)")+xlab("Area")+ggtitle("f. HYDROC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROCm boxplot
-p22 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROCm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROCm (minutes)")+xlab("Area")+ggtitle("d. HYDROCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p22 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROCm, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROCm (minutes)")+xlab("Area")+ggtitle("g. HYDROCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the HYDROV boxplot
-p23 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROV, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROV (ha)")+xlab("Area")+ggtitle("e. HYDROV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p23 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=HYDROV, fill=Area ))+geom_jitter(aes(x=Area, y=HYDROV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("HYDROV (ha)")+xlab("Area")+ggtitle("h. HYDROV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WET boxplot
-p24 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WET, fill=Area ))+geom_jitter(aes(x=Area, y=WET,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WET (minutes)")+xlab("Area")+ggtitle("f. WET for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p24 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WET, fill=Area ))+geom_jitter(aes(x=Area, y=WET,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WET (minutes)")+xlab("Area")+ggtitle("h. WET for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WETm boxplot
-p25 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETm, fill=Area ))+geom_jitter(aes(x=Area, y=WETm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETm (minutes)")+xlab("Area")+ggtitle("g. WETm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p25 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETm, fill=Area ))+geom_jitter(aes(x=Area, y=WETm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETm (minutes)")+xlab("Area")+ggtitle("i. WETm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WETv boxplot
-p26 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETv, fill=Area ))+geom_jitter(aes(x=Area, y=WETv,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETv (ha)")+xlab("Area")+ggtitle("h. WETv for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p26 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WETv, fill=Area ))+geom_jitter(aes(x=Area, y=WETv,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WETv (ha)")+xlab("Area")+ggtitle("i. WETv for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLE boxplot
 p27 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLE, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLE,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLE (m.)")+xlab("Area")+ggtitle("a. GEOLE for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
@@ -682,121 +688,104 @@ p29 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 p30 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLCm, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLCm (minutes)")+xlab("Area")+ggtitle("d. GEOLCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the GEOLV boxplot
-p31 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLV, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLV (ha)")+xlab("Area")+ggtitle("e. GEOLV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p31 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=GEOLV, fill=Area ))+geom_jitter(aes(x=Area, y=GEOLV,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("GEOLV (ha)")+xlab("Area")+ggtitle("a. GEOLV for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the CPFPCGs boxplot
-p32 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCGs, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCGs,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCGs (ha)")+xlab("Area")+ggtitle("a. CPFPCGs for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p32 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCGs, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCGs,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCGs (ha)")+xlab("Area")+ggtitle("b. CPFPCGs for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the CPFPCDs boxplot
-p33 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDs, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDs,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDs (ha)")+xlab("Area")+ggtitle("b. CPFPCDs for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p33 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDs, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDs,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDs (ha)")+xlab("Area")+ggtitle("c. CPFPCDs for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the CPFPCGc boxplot
-p34 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCGc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCGc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCGc (minutes)")+xlab("Area")+ggtitle("c. CPFPCGc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p34 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCGc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCGc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCGc (minutes)")+xlab("Area")+ggtitle("e. CPFPCGc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the CPFPCDc boxplot
-p35 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDc (minutes)")+xlab("Area")+ggtitle("d. CPFPCDc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p35 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=CPFPCDc, fill=Area ))+geom_jitter(aes(x=Area, y=CPFPCDc,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("CPFPCDc (minutes)")+xlab("Area")+ggtitle("f. CPFPCDc for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the VISC boxplot
-p36 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISC, fill=Area ))+geom_jitter(aes(x=Area, y=VISC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISC (ha)")+xlab("Area")+ggtitle("a. VISC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p36 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISC, fill=Area ))+geom_jitter(aes(x=Area, y=VISC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISC (ha)")+xlab("Area")+ggtitle("d. VISC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the VISZ boxplot
-p37 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISZ, fill=Area ))+geom_jitter(aes(x=Area, y=VISZ,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISZ (ha)")+xlab("Area")+ggtitle("b. VISZ for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p37 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISZ, fill=Area ))+geom_jitter(aes(x=Area, y=VISZ,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISZ (ha)")+xlab("Area")+ggtitle("e. VISZ for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the VISPR boxplot
-p38 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISPR, fill=Area ))+geom_jitter(aes(x=Area, y=VISPR,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPR")+xlab("Area")+ggtitle("c. VISPR for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p38 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISPR, fill=Area ))+geom_jitter(aes(x=Area, y=VISPR,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPR")+xlab("Area")+ggtitle("g. VISPR for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the VISPRm boxplot
-p39 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISPRm, fill=Area ))+geom_jitter(aes(x=Area, y=VISPRm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPRm")+xlab("Area")+ggtitle("d. VISPRm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p39 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=VISPRm, fill=Area ))+geom_jitter(aes(x=Area, y=VISPRm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("VISPRm")+xlab("Area")+ggtitle("h. VISPRm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the LCPC boxplot
-p40 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=LCPC, fill=Area ))+geom_jitter(aes(x=Area, y=LCPC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPC (minutes)")+xlab("Area")+ggtitle("a. LCPC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p40 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=LCPC, fill=Area ))+geom_jitter(aes(x=Area, y=LCPC,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPC (minutes)")+xlab("Area")+ggtitle("i. LCPC for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the LCPCm boxplot
-p41 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=LCPCm, fill=Area ))+geom_jitter(aes(x=Area, y=LCPCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPCm (minutes)")+xlab("Area")+ggtitle("b. LCPCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p41 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=LCPCm, fill=Area ))+geom_jitter(aes(x=Area, y=LCPCm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("LCPCm (minutes)")+xlab("Area")+ggtitle("a. LCPCm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the TOTINS boxplot
-p42 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TOTINS, fill=Area ))+geom_jitter(aes(x=Area, y=TOTINS,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINS")+xlab("Area")+ggtitle("a. TOTINS for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p42 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TOTINS, fill=Area ))+geom_jitter(aes(x=Area, y=TOTINS,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINS")+xlab("Area")+ggtitle("b. TOTINS for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the TOTINSm boxplot
-p43 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TOTINSm, fill=Area ))+geom_jitter(aes(x=Area, y=TOTINSm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINSm")+xlab("Area")+ggtitle("b. TOTINSm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p43 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=TOTINSm, fill=Area ))+geom_jitter(aes(x=Area, y=TOTINSm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("TOTINSm")+xlab("Area")+ggtitle("c. TOTINSm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the DIRINS boxplot
-p44 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIRINS, fill=Area ))+geom_jitter(aes(x=Area, y=DIRINS,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINS")+xlab("Area")+ggtitle("c. DIRINS for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p44 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIRINS, fill=Area ))+geom_jitter(aes(x=Area, y=DIRINS,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINS")+xlab("Area")+ggtitle("d. DIRINS for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the DIRINSm boxplot
-p45 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIRINSm, fill=Area ))+geom_jitter(aes(x=Area, y=DIRINSm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINSm")+xlab("Area")+ggtitle("d. DIRINSm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p45 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIRINSm, fill=Area ))+geom_jitter(aes(x=Area, y=DIRINSm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIRINSm")+xlab("Area")+ggtitle("e. DIRINSm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the DIFINS boxplot
-p46 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIFINS, fill=Area ))+geom_jitter(aes(x=Area, y=DIFINS,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINS")+xlab("Area")+ggtitle("e. DIFINS for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p46 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIFINS, fill=Area ))+geom_jitter(aes(x=Area, y=DIFINS,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINS")+xlab("Area")+ggtitle("f. DIFINS for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the DIFINSm boxplot
-p47 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIFINSm, fill=Area ))+geom_jitter(aes(x=Area, y=DIFINSm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINSm")+xlab("Area")+ggtitle("f. DIFINSm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p47 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=DIFINSm, fill=Area ))+geom_jitter(aes(x=Area, y=DIFINSm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("DIFINSm")+xlab("Area")+ggtitle("g. DIFINSm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WIND boxplot
-p48 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WIND, fill=Area ))+geom_jitter(aes(x=Area, y=WIND,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WIND")+xlab("Area")+ggtitle("a. WIND for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p48 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WIND, fill=Area ))+geom_jitter(aes(x=Area, y=WIND,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WIND")+xlab("Area")+ggtitle("h. WIND for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the WINDm boxplot
-p49 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WINDm, fill=Area ))+geom_jitter(aes(x=Area, y=WINDm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WINDm")+xlab("Area")+ggtitle("b. WINDm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+p49 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=WINDm, fill=Area ))+geom_jitter(aes(x=Area, y=WINDm,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("WINDm")+xlab("Area")+ggtitle("i. WINDm for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
-## create Figure X (Altitude)
+## create Figure X SI
 (p | p1 | p2) /
-(p3 | p4 | p5) /
-(p6 | p7 | p8)/
-(p9 | guide_area()| guide_area())
+  (p3 | p4 | p5) /
+  (p6 | p7 | p10)
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
+png(file = "~/figures/FigureX.png",width = 1506,height = 750)
 
-## create Figure X (Slope)
-(p10 | p11 | p12) /
-(p13 | p14 | p15) /
-(p16 | guide_area()| guide_area())
+## create Figure X Text
+(p8 | p9 | p12) /
+  (p13 | p14 | p15) /
+  (p16 | p23 | p26)
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 
-## create Figure X (Aspect)
-(p17 | p18)
+png(file = "~/figures/FigureX.png",width = 1506,height = 750)
 
-png(file = "~/figures/FigureX.png",width = 2000,height = 1000)
+## create Figure X SI
+(p11 | p17 | p18) /
+  (p19 | p20 | p21) /
+  (p22 | p24| p25)
 
-## create Figure X (hydrology)
-(p19 | p20 | p21) /
-(p22 | p23 | p24) /
-(p25 | p26| guide_area())
+png(file = "~/figures/FigureX.png",width = 1506,height = 750)
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 2100)
 
-## create Figure X (geology)
+## create Figure X Text
+(p31 | p32 | p33) /
+  (p36 | p37 | guide_area())
+
+png(file = "~/figures/FigureX.png",width = 1506,height = 600)
+
+## create Figure X SI
 (p27 | p28 | p29) /
-(p30 | p31 | guide_area())
+  (p30 | p34 | p35) /
+  (p38 | p39 | p40)
 
-png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
+png(file = "~/figures/FigureX.png",width = 1506,height = 750)
 
-## create Figure X (biotic)
-(p32 | p33 | p34)
+## create Figure X SI
+(p41 | p42 | p43) /
+  (p44 | p45 | p46) /
+  (p47 | p48| p49)
 
-png(file = "~/figures/FigureX.png",width = 1500,height = 1200)
-
-## create Figure X (visibility)
-(p36 | p37 | p38) /
-(p39 | guide_area() | guide_area())
-
-png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
-
-## create Figure X (lcpc)
-(p40 | p41)
-
-png(file = "~/figures/FigureX.png",width = 2000,height = 1000)
-
-## create Figure X (insolation)
-(p42 | p43 | p44) /
-(p45 | p46 | p47)
-
-png(file = "~/figures/FigureX.png",width = 2970,height = 1500)
-
-## create Figure X (wind)
-(p48 | p49)
-
-png(file = "~/figures/FigureX.png",width = 2000,height = 1000)
+png(file = "~/figures/FigureX.png",width = 1506,height = 750)
 
 
 
@@ -1319,7 +1308,7 @@ t.test(DIRINSm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # 
 normalityTest(~DIFINSm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
 ## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
-wilcox.test(DIFINSm ~ Type, alternative="two.sided", data=test_northern) # Shows same variance p-value > 0.05 -- T Welch test#
+wilcox.test(DIFINSm ~ Type, alternative="two.sided", data=test_northern) # Shows same variance p-value < 0.05 -- T Welch test#
 
 ## T Welch Test for independent samples
 t.test(DIFINSm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # Shows different variances p-value < 0.05 -- Samples from different populations#
@@ -1331,11 +1320,229 @@ t.test(DIFINSm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, #
 normalityTest(~WINDm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
 ## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
-wilcox.test(WINDm ~ Type, alternative="two.sided", data=test_northern) # Shows same variance p-value > 0.05 -- T Welch test#
+wilcox.test(WINDm ~ Type, alternative="two.sided", data=test_northern) # Shows same variance p-value > 0.05 -- T Student test#
 
 ## T Student Test for independent samples
 t.test(WINDm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+
+
+
+
+
+## Central Area ##
+## Import files
+test_central <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_variables_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+## Install and load Rcmdr package
+install.packages("Rcmdr")
+library(Rcmdr)
+
+# ALTm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~ALTm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(ALTm ~ Type, alternative="two.sided", data=test_central) # Shows different variances p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(ALTm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+
+
+# TPI100m
+## Normality Test
+normalityTest(~TPI100m, test="shapiro.test", data=test_central) # Shows normality p-value > 0.05 -- F test#
+
+## F Test for check parametric homoscedasticity/variances (medians by group)
+var.test(TPI100m ~ Type, alternative='two.sided', conf.level=.95, 
+         data=test_central) # Shows same variance p-value > 0.05 -- T student test#
+
+## T Student Test for independent samples
+t.test(TPI100m~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+
+
+# TPI500m
+## Normality Test
+normalityTest(~TPI500m, test="shapiro.test", data=test_central) # Shows normality p-value > 0.05 -- F test#
+
+## F Test for check parametric homoscedasticity/variances (medians by group)
+var.test(TPI500m ~ Type, alternative='two.sided', conf.level=.95, 
+         data=test_central) # Shows different variances p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(TPI500m~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+
+
+# TPI1000m
+## Normality Test
+normalityTest(~TPI1000m, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(TPI1000m ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(TPI1000m~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+
+
+# SLOm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~SLOm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(SLOm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T student test#
+
+## T Student Test for independent samples
+t.test(SLOm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+
+
+# ASPm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~ASPm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(ASPm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T student test#
+
+## T Student Test for independent samples
+t.test(ASPm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+
+
+# HYDROEm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~HYDROEm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (meedians by group) 
+wilcox.test(HYDROEm ~ Type, alternative="two.sided", data=test_central) # Shows different variances p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(HYDROEm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+
+
+# HYDROCm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~HYDROCm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(HYDROCm ~ Type, alternative="two.sided", data=test_central) # Shows different variances p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(HYDROCm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+
+
+# WETm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~WETm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(WETm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T student test#
+
+## T Student Test for independent samples
+t.test(WETm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+
+
+# GEOLEm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~GEOLEm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(GEOLEm ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(GEOLEm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+
+
+# GEOLCm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~GEOLCm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(GEOLCm ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(GEOLCm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+
+
+# VISPRm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~VISPRm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(VISPRm ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(VISPRm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+
+
+# LCPCm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~LCPCm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(LCPCm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T Student test#
+
+## T Student Test for independent samples
+t.test(LCPCm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+
+
+# TOTINSm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~TOTINSm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(TOTINSm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T Student test#
+
+## T Student Test for independent samples
+t.test(TOTINSm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+
+
+# DIRINSm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~DIRINSm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(DIRINSm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T Student test#
+
+## T Student Test for independent samples
+t.test(DIRINSm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+
+
+# DIFINSm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~DIFINSm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(DIFINSm ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(DIFINSm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+
+
+# WINDm
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~WINDm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(WINDm ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(WINDm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # Shows different variances p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+
 
 
 
