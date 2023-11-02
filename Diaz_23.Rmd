@@ -196,6 +196,8 @@ dev.off()
 
 Process to create the kernel density plots comparing archaeological sites and 999 randomly resampled background points.
 
+## Northern area
+
 ```{r echo=TRUE, results='hide'}
 # Northern area
 
@@ -315,6 +317,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("a. ALTA in Northern Mountain ranges")
 
+# Export the figure
+png(file = "~/output/FigureALTA-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -412,8 +417,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("b. TPI100 in Northern Mountain ranges")
 
-
-
+# Export the figure
+png(file = "~/output/FigureTPI100-Northern.png",width = 1000,height = 437)
+dev.off()
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
 background_TPI100_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
@@ -445,7 +451,7 @@ background_TPI100_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = 
 round(background_TPI100_MWU, 3)
 ```
 
-##TPI500
+## TPI500
 
 Create kernel density plot graph for the variable TPI500.
 
@@ -510,7 +516,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("a. TPI500 variable in Northern Mountain ranges")
 
-
+# Export the figure
+png(file = "~/output/FigureTPI500-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -543,7 +551,7 @@ background_TPI500_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = 
 round(background_TPI500_MWU, 3)
 ```
 
-##TPI1000
+## TPI1000
 
 Create kernel density plot graph for the variable TPI1000.
 
@@ -608,7 +616,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("b. TPI1000 in Northern Mountain ranges")
 
-
+# Export the figure
+png(file = "~/output/FigureTPI1000-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -641,7 +651,7 @@ background_TPI1000_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine =
 round(background_TPI1000_MWU, 3)
 ```
 
-##SLO
+## SLO
 
 Create kernel density plot graph for the variable SLO.
 
@@ -706,8 +716,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("c. SLO in Northern Mountain ranges")
 
-
-
+# Export the figure
+png(file = "~/output/FigureSLO-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -740,7 +751,7 @@ background_SLO_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbi
 round(background_SLO_MWU, 3)
 ```
 
-##ASP
+## ASP
 
 Create kernel density plot graph for the variable ASP.
 
@@ -805,7 +816,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("c. ASP in Northern Mountain ranges")
 
-
+# Export the figure
+png(file = "~/output/FigureASP-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -838,7 +851,7 @@ background_ASP_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbi
 round(background_ASP_MWU, 3)
 ```
 
-##HYDROE
+## HYDROE
 
 Create kernel density plot graph for the variable HYDROE.
 
@@ -902,7 +915,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("d. HYDROE in Northern Mountain ranges")
 
-
+# Export the figure
+png(file = "~/output/FigureHYDROE-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -935,7 +950,7 @@ background_HYDROE_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = 
 round(background_HYDROE_MWU, 3)
 ```
 
-##HYDROC
+## HYDROC
 
 Create kernel density plot graph for the variable HYDROC.
 
@@ -1000,8 +1015,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("d. HYDROC in Northern Mountain ranges")
 
-
-
+# Export the figure
+png(file = "~/output/FigureHYDROC-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -1034,7 +1050,7 @@ background_HYDROC_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = 
 round(background_HYDROC_MWU, 3)
 ```
 
-##WET
+## WET
 
 Create kernel density plot graph for the variable WET.
 
@@ -1099,8 +1115,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("a. WET in Northern Mountain ranges")
 
-
-
+# Export the figure
+png(file = "~/output/FigureWET-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -1133,7 +1150,7 @@ background_WET_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbi
 round(background_WET_MWU, 3)
 ```
 
-##GEOLE
+## GEOLE
 
 Create kernel density plot graph for the variable GEOLE.
 
@@ -1198,8 +1215,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("a. WET in Northern Mountain ranges")
 
-
-
+# Export the figure
+png(file = "~/output/FigureGEOLE-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -1232,7 +1250,7 @@ background_WET_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbi
 round(background_WET_MWU, 3)
 ```
 
-##GEOLC
+## GEOLC
 
 Create kernel density plot graph for the variable GEOLC.
 
@@ -1297,8 +1315,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("c. GEOLC in Northern Mountain ranges")
 
-
-
+# Export the figure
+png(file = "~/output/FigureGEOLC-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -1331,7 +1350,7 @@ background_GEOLC_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = r
 round(background_GEOLC_MWU, 3)
 ```
 
-##VISPR
+## VISPR
 
 Create kernel density plot graph for the variable VISPR.
 
@@ -1396,8 +1415,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("d. VISPR in Northern Mountain ranges")
 
-
-
+# Export the figure
+png(file = "~/output/FigureVISPR-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -1430,7 +1450,7 @@ background_VISPR_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = r
 round(background_VISPR_MWU, 3)
 ```
 
-##LCPC
+## LCPC
 
 Create kernel density plot graph for the variable LCPC.
 
@@ -1495,7 +1515,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("a. LCPC in Northern Mountain ranges")
 
-
+# Export the figure
+png(file = "~/output/FigureLCPC-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -1528,7 +1550,7 @@ background_LCPC_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rb
 round(background_LCPC_MWU, 3)
 ```
 
-##TOTINS
+## TOTINS
 
 Create kernel density plot graph for the variable TOTINS.
 
@@ -1593,7 +1615,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("a. TOTINS in Northern Mountain ranges")
 
-
+# Export the figure
+png(file = "~/output/FigureTOTINS-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -1626,7 +1650,7 @@ background_TOTINS_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = 
 round(background_TOTINS_MWU, 3)
 ```
 
-##DIRINS
+## DIRINS
 
 Create kernel density plot graph for the variable SLO.
 
@@ -1691,7 +1715,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("b. DIRINS in Northern Mountain ranges")
 
-
+# Export the figure
+png(file = "~/output/FigureDIRINS-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -1724,7 +1750,7 @@ background_DIRINS_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = 
 round(background_DIRINS_MWU, 3)
 ```
 
-##DIFINS
+## DIFINS
 
 Create kernel density plot graph for the variable DIFINS.
 
@@ -1789,8 +1815,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("c. DIFINS in Northern Mountain ranges")
 
-
-
+# Export the figure
+png(file = "~/output/FigureDIFINS-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -1823,7 +1850,7 @@ background_DIFINS_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = 
 round(background_DIFINS_MWU, 3)
 ```
 
-##WIND
+## WIND
 
 Create kernel density plot graph for the variable SLO.
 
@@ -1888,6 +1915,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("b. WIND variable in Northern Mountain ranges")
 
+# Export the figure
+png(file = "~/output/FigureWIND-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -1920,7 +1950,7 @@ background_WIND_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rb
 round(background_WIND_MWU, 3)
 ```
 
-##CPFPCGc
+## CPFPCGc
 
 Create kernel density plot graph for the variable CPFPCGc.
 
@@ -1985,6 +2015,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("c. CPFPCGc in Northern Mountain ranges")
 
+# Export the figure
+png(file = "~/output/FigureCPFPCGc-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -2017,7 +2050,7 @@ background_CPFPCGc_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine =
 round(background_CPFPCGc_MWU, 3)
 ```
 
-##CPFPCDc
+## CPFPCDc
 
 Create kernel density plot graph for the variable CPFPCDc.
 
@@ -2082,6 +2115,9 @@ ggplot() +
                           y = Frequency),
             color = "red") +ggtitle("d. CPFPCDc in Northern Mountain ranges")
 
+# Export the figure
+png(file = "~/output/FigureCPFPCDc-Northern.png",width = 1000,height = 437)
+dev.off()
 
 
 # Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
@@ -2114,120 +2150,1974 @@ background_CPFPCDc_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine =
 round(background_CPFPCDc_MWU, 3)
 ```
 
-# Crear graficos de barras
-
-### Paquetes necesarios
-
-Importacion de los paquetes necesarios para crear los graficos de barras.
+## Central area
 
 ```{r echo=TRUE, results='hide'}
-spatpack<-c("spatstat","dismo", "MASS", "ggplot2", "plyr", "sp","maps","maptools","raster","geostatsp","rgdal")
-lapply(spatpack, require, character.only = TRUE)
+# Central area
+
+## set your working directory
+setwd("~/mountain_ranges/shp")
+
+## add the sites
+sites_central <- readOGR(dsn="sites_central.shp", layer="sites_central")
+
+
+## set the working directory
+setwd("~/mountain_ranges/grids")
+
+## Import variables and set the same extent for everyone
+ALTA_central <- raster("ALTA_central.tif")
+
+TPI100_central <- raster("TPI100_central.asc")
+
+TPI500_central <- raster("TPI500_central.asc")
+
+TPI1000_central <- raster("TPI1000_central.asc")
+
+SLO_central <- raster("SLO_central.tif") 
+
+ASP_central <- raster("ASP_central.tif") 
+
+HYDROE_central <- raster("HYDROE_central.tif")
+
+HYDROC_central <- raster("HYDROC_central.tif") 
+
+WET_central <- raster("WET_central.tif") 
+
+GEOLE_central <- raster("GEOLE_central.tif")
+
+GEOLC_central <- raster("GEOLC_central.tif")
+
+VISPR_central <- raster("VISPR_central.tif")
+
+LCPC_central <- raster("LCPC_central.tif")
+
+TOTINS_central <- raster("TOTINS_central.asc") 
+
+DIRINS_central <- raster("DIRINS_central.asc") 
+
+DIFINS_central <- raster("DIFINS_central.asc")  
+
+WIND_central <- raster("WIND_central.asc") 
+
+CPFPCDc_central <- raster("CPFPCDc_central.tif")
+
+CPFPCGc_central <- raster("CPFPCGc_central.tif")
 ```
 
-### Importar Datos
+## ALTA
 
-Paso consistente en importar los datos de los csv.
-
-```{r, message=FALSE, warning=FALSE, paged.print=FALSE}
-altplot <- read.table(file="csv/altplot.csv",header=TRUE, sep=";")
-altplot1 <- read.table(file="csv/altplot1.csv",header=TRUE, sep=";")
-altplot2 <- read.table(file="csv/altplot2.csv",header=TRUE, sep=";")
-altplot3 <- read.table(file="csv/altplot3.csv",header=TRUE, sep=";")
-altplot4 <- read.table(file="csv/altplot4.csv",header=TRUE, sep=";")
-```
-
-### Crear Figura 2A
-
-Crear y exportar grafico de barras relativo a la altitud.
+Create kernel density plot graph for the variable ALTA.
 
 ```{r echo=TRUE, results='hide'}
-altplot$Altitud <- factor (altplot$Altitud, levels = c("0-100", "100-200","200-300","300-400","400-500","500-600","600-700","700-800","800-900","900-1000","1000-1100","1100-1200","1200-1300","1300-1400","1400-1500"))  
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
 
-p <- ggplot(altplot,aes(Altitud,Porcentaje)) + geom_bar(data=subset(altplot,Categoria=="Terreno"),stat="identity", fill="gray") + geom_line(data=subset(altplot,Categoria=="Yacimiento"), aes(group="Categoria", colour="red"),size=1.5) + guides(colour=FALSE) + theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold")) + labs(title = "", y = "Porcentaje", x = "Altitud (msnm)")  
-p <- p + theme( 
-  panel.background = element_rect(fill = "transparent",colour = NA), 
-  panel.grid.minor = element_blank(), 
-  panel.grid.major = element_blank(), 
-  plot.background = element_rect(fill = "transparent",colour = NA) 
-)
-plot(p)
 
-pdf(file = "~output/Figura2A.pdf",width = 5,height = 12)
+sites_central$`ALTA (m)` <-  
+  raster::extract(ALTA_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  ALTA_central %>%
+  density(from = 471, to = 759, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(ALTA = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_ALTA_values <- ALTA_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_ALTA_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_ALTA_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 245, to = 834, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("ALTA", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_ALTA_densities,
+            mapping = aes(x = ALTA,
+                          y = Frequency)) +
+  geom_ribbon(data = background_ALTA_densities,
+              mapping = aes(x = ALTA,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = ALTA,
+                          y = Frequency),
+            color = "red") +ggtitle("a. ALTA in Central Mountain ranges")
+
+# Export the figure
+png(file = "~/output/FigureALTA-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_ALTA_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_ALTA_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`ALTA (m)`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_ALTA_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_ALTA_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_ALTA_MWU, 3)
 ```
 
-### Crear Figura 2B
+## TPI100
 
-Crear y exportar grafico de barras relativo a la pendiente.
+Create kernel density plot graph for the variable TPI100.
 
 ```{r echo=TRUE, results='hide'}
-altplot1$Pendiente <- factor (altplot1$Pendiente, levels = c("0-5", "5-10","10-15","15-20","20-25","25-30","30-35","35-40","40-45","45-50","50-55","55-60","60-65"))  
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
 
-p1 <- ggplot(altplot1,aes(Pendiente,Porcentaje)) + geom_bar(data=subset(altplot1,Categoria=="Terreno"),stat="identity", fill="gray") + geom_line(data=subset(altplot1,Categoria=="Yacimiento"), aes(group="Categoria", colour="red"),size=1.5) + guides(colour=FALSE) + theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))+ labs(title = "", y = "Porcentaje", x = "Pendiente (grados)")   
-p1 <- p1 + theme( 
-  panel.background = element_rect(fill = "transparent",colour = NA), 
-  panel.grid.minor = element_blank(), 
-  panel.grid.major = element_blank(), 
-  plot.background = element_rect(fill = "transparent",colour = NA) 
-)
-plot(p1)
 
-pdf(file = "~output/Figura2B.pdf",width = 5,height = 12)
+sites_central$`TPI100` <-  
+  raster::extract(TPI100_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  TPI100_central %>%
+  density(from = -19.6531, to = 19.1837, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(TPI100 = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_TPI100_values <- TPI100_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_TPI100_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_TPI100_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = -19.6531, to = 19.1837, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("TPI100", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_TPI100_densities,
+            mapping = aes(x = TPI100,
+                          y = Frequency)) +
+  geom_ribbon(data = background_TPI100_densities,
+              mapping = aes(x = TPI100,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = TPI100,
+                          y = Frequency),
+            color = "red") +ggtitle("b. TPI100 in Central Mountain ranges")
+
+# Export the figure
+png(file = "~/output/FigureTPI100-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_TPI100_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_TPI100_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`TPI100`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_TPI100_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_TPI100_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_TPI100_MWU, 3)
 ```
 
-### Crear Figura 2C
+## TPI500
 
-Crear y exportar grafico de barras relativo al coste a la hidrologia potencial.
+Create kernel density plot graph for the variable TPI500.
 
 ```{r echo=TRUE, results='hide'}
-altplot2$Coste <- factor (altplot2$Coste, levels = c("0-1000", "1000-2000","2000-3000","3000-4000","4000-5000","5000-6000","6000-7000","7000-8000","8000-9000","9000-10000","10000-11000","11000-12000","12000-13000"))  
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
 
-p2 <- ggplot(altplot2,aes(Coste,Porcentaje)) + geom_bar(data=subset(altplot2,Categoria=="Terreno"),stat="identity", fill="gray") + geom_line(data=subset(altplot2,Categoria=="Yacimiento"), aes(group="Categoria", colour="red"),size=1.5) + guides(colour=FALSE) + theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))+ labs(title = "", y = "Porcentaje", x = "Coste a hidrologia (segundos)")   
-p2 <- p2 + theme( 
-  panel.background = element_rect(fill = "transparent",colour = NA), 
-  panel.grid.minor = element_blank(), 
-  panel.grid.major = element_blank(), 
-  plot.background = element_rect(fill = "transparent",colour = NA) 
-)
-plot(p2)
 
-pdf(file = "~output/Figura2C.pdf",width = 5,height = 12)
+sites_central$`TPI500` <-  
+  raster::extract(TPI500_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  TPI500_central %>%
+  density(from = -60.73590, to = 62.37790, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(TPI500 = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_TPI500_values <- TPI500_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_TPI500_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_TPI500_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = -60.73590, to = 62.37790, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("TPI500", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_TPI500_densities,
+            mapping = aes(x = TPI500,
+                          y = Frequency)) +
+  geom_ribbon(data = background_TPI500_densities,
+              mapping = aes(x = TPI500,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = TPI500,
+                          y = Frequency),
+            color = "red") +ggtitle("c. TPI500 in Central Mountain ranges")
+
+# Export the figure
+png(file = "~/output/FigureTPI500-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_TPI500_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_TPI500_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`TPI500`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_TPI500_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_TPI500_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_TPI500_MWU, 3)
 ```
 
-### Crear Figura 2D
+## TPI1000
 
-Crear y exportar grafico de barras relativo al coste a las zonas de humedal.
+Create kernel density plot graph for the variable TPI100.
 
 ```{r echo=TRUE, results='hide'}
-altplot3$Coste <- factor (altplot3$Coste, levels = c("0-1000", "1000-2000","2000-3000","3000-4000","4000-5000","5000-6000","6000-7000","7000-8000","8000-9000","9000-10000","10000-11000","11000-12000"))  
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
 
-p3 <- ggplot(altplot3,aes(Coste,Porcentaje)) + geom_bar(data=subset(altplot3,Categoria=="Terreno"),stat="identity", fill="gray") + geom_line(data=subset(altplot3,Categoria=="Yacimiento"), aes(group="Categoria", colour="red"),size=1.5) + guides(colour=FALSE) + theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))+ labs(title = "", y = "Porcentaje", x = "Coste a zonas de humedal (segundos)") 
-p3 <- p3 + theme( 
-  panel.background = element_rect(fill = "transparent",colour = NA), 
-  panel.grid.minor = element_blank(), 
-  panel.grid.major = element_blank(), 
-  plot.background = element_rect(fill = "transparent",colour = NA) 
-)
-plot(p3)
 
-pdf(file = "~output/Figura2D.pdf",width = 5,height = 12)
+sites_central$`TPI1000` <-  
+  raster::extract(TPI1000_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  TPI1000_central %>%
+  density(from = -90.0561, to = 109.978, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(TPI1000 = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_TPI1000_values <- TPI1000_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_TPI1000_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_TPI1000_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = -90.0561, to = 109.978, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("TPI1000", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_TPI1000_densities,
+            mapping = aes(x = TPI1000,
+                          y = Frequency)) +
+  geom_ribbon(data = background_TPI1000_densities,
+              mapping = aes(x = TPI1000,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = TPI1000,
+                          y = Frequency),
+            color = "red") +ggtitle("d. TPI1000 in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureTPI1000-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_TPI1000_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_TPI1000_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`TPI1000`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_TPI1000_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_TPI1000_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_TPI1000_MWU, 3)
 ```
 
-### Crear Figura 2E
+## SLO
 
-Crear y exportar grafico de barras relativo al indice de prominencia visual.
+Create kernel density plot graph for the variable SLO.
 
 ```{r echo=TRUE, results='hide'}
-altplot4$Indice <- factor (altplot4$Indice, levels = c("0-20", "20-40","40-60","60-80","80-100","100-120","120-140","140-160","160-180","180-200"))  
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
 
-p4 <- ggplot(altplot4,aes(Indice,Porcentaje)) + geom_bar(data=subset(altplot4,Categoria=="Terreno"),stat="identity", fill="gray") + geom_line(data=subset(altplot4,Categoria=="Yacimiento"), aes(group="Categoria", colour="red"),size=1.5) + guides(colour=FALSE) + theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold"))+ labs(title = "", y = "Porcentaje", x = "Indice de Prominencia Visual")  
-p4 <- p4 + theme( 
-  panel.background = element_rect(fill = "transparent",colour = NA), 
-  panel.grid.minor = element_blank(), 
-  panel.grid.major = element_blank(), 
-  plot.background = element_rect(fill = "transparent",colour = NA) 
-)
-plot(p4)
 
-pdf(file = "~output/Figura2E.pdf",width = 5,height = 12)
+sites_central$`SLO` <-  
+  raster::extract(SLO_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  SLO_central %>%
+  density(from = 0, to = 16, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(SLO = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_SLO_values <- SLO_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_SLO_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_SLO_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 40, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("SLO", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_SLO_densities,
+            mapping = aes(x = SLO,
+                          y = Frequency)) +
+  geom_ribbon(data = background_SLO_densities,
+              mapping = aes(x = SLO,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = SLO,
+                          y = Frequency),
+            color = "red") +ggtitle("a. SLO in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureSLO-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_SLO_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_SLO_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`SLO`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_SLO_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_SLO_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_SLO_MWU, 3)
+```
+
+## ASP
+
+Create kernel density plot graph for the variable ASP.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`ASP` <-  
+  raster::extract(ASP_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  ASP_central %>%
+  density(from = 11, to = 347, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(ASP = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_ASP_values <- ASP_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_ASP_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_ASP_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 360, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("ASP", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_ASP_densities,
+            mapping = aes(x = ASP,
+                          y = Frequency)) +
+  geom_ribbon(data = background_ASP_densities,
+              mapping = aes(x = ASP,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = ASP,
+                          y = Frequency),
+            color = "red") +ggtitle("b. ASP variable in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureASP-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_ASP_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_ASP_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`ASP`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_ASP_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_ASP_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_ASP_MWU, 3)
+```
+
+## HYDROE
+
+Create kernel density plot graph for the variable HYDROE.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`HYDROE` <-  
+  raster::extract(HYDROE_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  HYDROE_central %>%
+  density(from = 33, to = 2019, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(HYDROE = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_HYDROE_values <- HYDROE_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_HYDROE_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_HYDROE_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 2586, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("HYDROE", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_HYDROE_densities,
+            mapping = aes(x = HYDROE,
+                          y = Frequency)) +
+  geom_ribbon(data = background_HYDROE_densities,
+              mapping = aes(x = HYDROE,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = HYDROE,
+                          y = Frequency),
+            color = "red") +ggtitle("a. HYDROE in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureHYDROE-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_HYDROE_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_HYDROE_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`HYDROE`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_HYDROE_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_HYDROE_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_HYDROE_MWU, 3)
+```
+
+## HYDROC
+
+Create kernel density plot graph for the variable HYDROC.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`HYDROC` <-  
+  raster::extract(HYDROC_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  HYDROC_central %>%
+  density(from = 5, to = 108, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(HYDROC = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_HYDROC_values <- HYDROC_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_HYDROC_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_HYDROC_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 141, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("HYDROC", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_HYDROC_densities,
+            mapping = aes(x = HYDROC,
+                          y = Frequency)) +
+  geom_ribbon(data = background_HYDROC_densities,
+              mapping = aes(x = HYDROC,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = HYDROC,
+                          y = Frequency),
+            color = "red") +ggtitle("b. HYDROC in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureHYDROC-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_HYDROC_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_HYDROC_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`HYDROC`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_HYDROC_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_HYDROC_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_HYDROC_MWU, 3)
+```
+
+## WET
+
+Create kernel density plot graph for the variable WET.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Northern area
+sites_northern_spdf <- SpatialPointsDataFrame(sites_northern, data.frame(sites_northern))
+
+
+sites_northern$`WET` <-  
+  raster::extract(WET_northern, 
+                  sites_northern_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_northern_densities <- sites_northern %$%
+  WET_northern %>%
+  density(from = 0, to = 45, n = 34) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 34) %>%
+  dplyr::rename(WET = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_WET_values <- WET_northern %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_WET_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_WET_values %>%
+    sample(nrow(sites_northern),
+           replace = FALSE) %>%
+    density(from = 0, to = 113, n = 34) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 34)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("WET", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_WET_densities,
+            mapping = aes(x = WET,
+                          y = Frequency)) +
+  geom_ribbon(data = background_WET_densities,
+              mapping = aes(x = WET,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_northern_densities,
+            mapping = aes(x = WET,
+                          y = Frequency),
+            color = "red") +ggtitle("a. WET in Northern Mountain ranges")
+
+# Export the figure
+png(file = "~/output/FigureWET-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_WET_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_WET_values %>%
+    sample(nrow(sites_northern),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_northern$`WET`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_WET_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_WET_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_WET_MWU, 3)
+```
+
+## GEOLE
+
+Create kernel density plot graph for the variable GEOLE.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`GEOLE` <-  
+  raster::extract(GEOLE_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  GEOLE_central %>%
+  density(from = 5366, to = 9523, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(GEOLE = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_GEOLE_values <- GEOLE_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_GEOLE_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_GEOLE_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 19671, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("GEOLE", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_GEOLE_densities,
+            mapping = aes(x = GEOLE,
+                          y = Frequency)) +
+  geom_ribbon(data = background_GEOLE_densities,
+              mapping = aes(x = GEOLE,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = GEOLE,
+                          y = Frequency),
+            color = "red") +ggtitle("d. GEOLE in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureGEOLE-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_GEOLE_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_GEOLE_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`GEOLE`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_GEOLE_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_GEOLE_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_GEOLE_MWU, 3)
+```
+
+## GEOLC
+
+Create kernel density plot graph for the variable GEOLC.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`GEOLC` <-  
+  raster::extract(GEOLC_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  GEOLC_central %>%
+  density(from = 259, to = 475, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(GEOLC = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_GEOLC_values <- GEOLC_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_GEOLC_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_GEOLC_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 956, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("GEOLC", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_GEOLC_densities,
+            mapping = aes(x = GEOLC,
+                          y = Frequency)) +
+  geom_ribbon(data = background_GEOLC_densities,
+              mapping = aes(x = GEOLC,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = GEOLC,
+                          y = Frequency),
+            color = "red") +ggtitle("a. GEOLC in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureGEOLC-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_GEOLC_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_GEOLC_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`GEOLC`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_GEOLC_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_GEOLC_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_GEOLC_MWU, 3)
+```
+
+## VISPR
+
+Create kernel density plot graph for the variable VISPR.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`VISPR` <-  
+  raster::extract(VISPR_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  VISPR_central %>%
+  density(from = 0, to = 68, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(VISPR = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_VISPR_values <- VISPR_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_VISPR_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_VISPR_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 156, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("VISPR", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_VISPR_densities,
+            mapping = aes(x = VISPR,
+                          y = Frequency)) +
+  geom_ribbon(data = background_VISPR_densities,
+              mapping = aes(x = VISPR,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = VISPR,
+                          y = Frequency),
+            color = "red") +ggtitle("b. VISPR in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureVISPR-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_VISPR_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_VISPR_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`VISPR`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_VISPR_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_VISPR_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_VISPR_MWU, 3)
+```
+
+## LCPC
+
+Create kernel density plot graph for the variable LCPC.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`LCPC` <-  
+  raster::extract(LCPC_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  LCPC_central %>%
+  density(from = 0, to = 14, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(LCPC = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_LCPC_values <- LCPC_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_LCPC_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_LCPC_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 101, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("LCPC", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_LCPC_densities,
+            mapping = aes(x = LCPC,
+                          y = Frequency)) +
+  geom_ribbon(data = background_LCPC_densities,
+              mapping = aes(x = LCPC,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = LCPC,
+                          y = Frequency),
+            color = "red") +ggtitle("c. LCPC in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureLCPC-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_LCPC_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_LCPC_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`LCPC`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_LCPC_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_LCPC_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_LCPC_MWU, 3)
+```
+
+## TOTINS
+
+Create kernel density plot graph for the variable TOTINS.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`TOTINS` <-  
+  raster::extract(TOTINS_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  TOTINS_central %>%
+  density(from = 3, to = 6, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(TOTINS = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_TOTINS_values <- TOTINS_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_TOTINS_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_TOTINS_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0.6, to = 6.2, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("TOTINS", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_TOTINS_densities,
+            mapping = aes(x = TOTINS,
+                          y = Frequency)) +
+  geom_ribbon(data = background_TOTINS_densities,
+              mapping = aes(x = TOTINS,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = TOTINS,
+                          y = Frequency),
+            color = "red") +ggtitle("c. TOTINS in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureTOTINS-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_TOTINS_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_TOTINS_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`TOTINS`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_TOTINS_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_TOTINS_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_TOTINS_MWU, 3)
+```
+
+## DIRINS
+
+Create kernel density plot graph for the variable DIRINS.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`DIRINS` <-  
+  raster::extract(DIRINS_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  DIRINS_central %>%
+  density(from = 2, to = 5, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(DIRINS = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_DIRINS_values <- DIRINS_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_DIRINS_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_DIRINS_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 5.5, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("DIRINS", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_DIRINS_densities,
+            mapping = aes(x = DIRINS,
+                          y = Frequency)) +
+  geom_ribbon(data = background_DIRINS_densities,
+              mapping = aes(x = DIRINS,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = DIRINS,
+                          y = Frequency),
+            color = "red") +ggtitle("d. DIRINS in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureDIRINS-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_DIRINS_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_DIRINS_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`DIRINS`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_DIRINS_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_DIRINS_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_DIRINS_MWU, 3)
+```
+
+## DIFINS
+
+Create kernel density plot graph for the variable DIFINS.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`DIFINS` <-  
+  raster::extract(DIFINS_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  DIFINS_central %>%
+  density(from = 0.88, to = 0.93, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(DIFINS = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_DIFINS_values <- DIFINS_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_DIFINS_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_DIFINS_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0.75, to = 0.93, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("DIFINS", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_DIFINS_densities,
+            mapping = aes(x = DIFINS,
+                          y = Frequency)) +
+  geom_ribbon(data = background_DIFINS_densities,
+              mapping = aes(x = DIFINS,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = DIFINS,
+                          y = Frequency),
+            color = "red") +ggtitle("a. DIFINS variable in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureDIFINS-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_DIFINS_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_DIFINS_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`DIFINS`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_DIFINS_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_DIFINS_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_DIFINS_MWU, 3)
+```
+
+## WIND
+
+Create kernel density plot graph for the variable WIND.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`WIND` <-  
+  raster::extract(WIND_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  WIND_central %>%
+  density(from = 0.79, to = 1.32, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(WIND = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_WIND_values <- WIND_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_WIND_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_WIND_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0.76, to = 1.33, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("WIND", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_WIND_densities,
+            mapping = aes(x = WIND,
+                          y = Frequency)) +
+  geom_ribbon(data = background_WIND_densities,
+              mapping = aes(x = WIND,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = WIND,
+                          y = Frequency),
+            color = "red") +ggtitle("d. WIND in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureWIND-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_WIND_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_WIND_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`WIND`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_WIND_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_WIND_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_WIND_MWU, 3)
+```
+
+## CPFPCGc
+
+Create kernel density plot graph for the variable CPFPCGc.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`CPFPCGc` <-  
+  raster::extract(CPFPCGc_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  CPFPCGc_central %>%
+  density(from = 21, to = 197, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(CPFPCGc = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_CPFPCGc_values <- CPFPCGc_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_CPFPCGc_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_CPFPCGc_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 542, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("CPFPCGc", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_CPFPCGc_densities,
+            mapping = aes(x = CPFPCGc,
+                          y = Frequency)) +
+  geom_ribbon(data = background_CPFPCGc_densities,
+              mapping = aes(x = CPFPCGc,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = CPFPCGc ,
+                          y = Frequency),
+            color = "red") +ggtitle("c. CPFPCGc in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureCPFPCGc-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_CPFPCGc_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_CPFPCGc_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`CPFPCGc`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_CPFPCGc_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_CPFPCGc_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_CPFPCGc_MWU, 3)
+```
+
+## CPFPCDc
+
+Create kernel density plot graph for the variable CPFPCDc.
+
+```{r echo=TRUE, results='hide'}
+## Extract cell site from the Central area
+sites_central_spdf <- SpatialPointsDataFrame(sites_central, data.frame(sites_central))
+
+
+sites_central$`CPFPCDc` <-  
+  raster::extract(CPFPCDc_central, 
+                  sites_central_spdf)
+
+## Delete the grey theme
+theme_set(theme_bw())
+
+
+## Calculate the sites densities for Central area
+sites_central_densities <- sites_central %$%
+  CPFPCDc_central %>%
+  density(from = 0, to = 0, n = 61) %>%
+  broom::tidy() %>%
+  tibble::as_tibble() %>%
+  dplyr::mutate(y = y * 61) %>%
+  dplyr::rename(CPFPCDc = x,
+                Frequency = y)
+
+## Calculate possible densities across the study area using resampling
+background_CPFPCDc_values <- CPFPCDc_central %>%
+  values() %>%
+  na.omit() # Drop all masked (NA) locations
+
+# Draw 999 random samples, and calculate their densities
+background_CPFPCDc_densities <- foreach::foreach(n = 1:999, .combine = rbind) %do% {
+  background_CPFPCDc_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    density(from = 0, to = 3.7, n = 61) %>%
+    broom::tidy() %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(y = y * 61)
+} %>%
+  dplyr::group_by(x) %>%
+  purrrlyr::by_slice(function(x){
+    quantile(x$y, probs = c(0.025, 0.5, 0.975)) %>%
+      t() %>%
+      broom::tidy()
+  }, .collate = "cols") %>%
+  magrittr::set_names(c("CPFPCDc", "Lower CI", "Frequency", "Upper CI"))
+
+# Plot distributions
+ggplot() +
+  geom_line(data = background_CPFPCDc_densities,
+            mapping = aes(x = CPFPCDc,
+                          y = Frequency)) +
+  geom_ribbon(data = background_CPFPCDc_densities,
+              mapping = aes(x = CPFPCDc,
+                            ymin = `Lower CI`,
+                            ymax = `Upper CI`),
+              alpha = 0.3) +
+  geom_line(data = sites_central_densities,
+            mapping = aes(x = CPFPCDc ,
+                          y = Frequency),
+            color = "red") +ggtitle("b. CPFPCDc in Central Mountain ranges")
+
+
+# Export the figure
+png(file = "~/output/FigureCPFPCDc-Central.png",width = 1000,height = 437)
+dev.off()
+
+
+# Draw 999 random samples from background, and compute two-sample Wilcoxon tests (Mann-Whitney U tests)
+background_CPFPCDc_MWU <- foreach(n = 1:999, .combine = rbind) %do% {
+  background_sample <- background_CPFPCDc_values %>%
+    sample(nrow(sites_central),
+           replace = FALSE) %>%
+    wilcox.test(x = sites_central$`CPFPCDc`,
+                y = .,
+                alternative = "greater",
+                exact = FALSE) %>%
+    broom::tidy() %>%
+    tibble::as_tibble()
+  
+} %>%
+  dplyr::select(statistic, p.value)
+
+
+# Get the median test statistic and 95% confidence interval
+background_CPFPCDc_MWU <- foreach::foreach(prob = c(0.025,0.5,0.975), .combine = rbind) %do% {
+  background_CPFPCDc_MWU %>%
+    dplyr::summarise_all(quantile, probs = prob)
+} %>%
+  t() %>%
+  magrittr::set_colnames(c("Lower CI","Median","Upper CI")) %>%
+  magrittr::set_rownames(c("U statistic","p-value"))
+
+
+
+round(background_CPFPCDc_MWU, 3)
 ```
