@@ -642,8 +642,8 @@ p14 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(ae
 ## Create the SLOpi boxplot
 p15 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=SLOpi, fill=Area ))+geom_jitter(aes(x=Area, y=SLOpi,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("SLOpi")+xlab("Area")+ggtitle("f. SLOpi for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
-## Create the INCr45-15 boxplot
-p16 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=INCr45.15, fill=Area ))+geom_jitter(aes(x=Area, y=INCr45.15,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("INCr45-15")+xlab("Area")+ggtitle("g. INCr45-15 for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
+## Create the INCr15-45 boxplot
+p16 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=INCr45.15, fill=Area ))+geom_jitter(aes(x=Area, y=INCr45.15,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("INCr15-45")+xlab("Area")+ggtitle("g. INCr15-45 for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
 
 ## Create the ASP boxplot
 p17 <- ggplot(data = boxplot_northern_vs_central,col=c(123,234))+geom_boxplot(aes(x=Area, y=ASP, fill=Area ))+geom_jitter(aes(x=Area, y=ASP,fill=Area),alpha=0.6)+scale_fill_brewer(palette="PuBu")+ylab("ASP")+xlab("Area")+ggtitle("b. ASP for the sites of each area")+ theme(plot.title = element_text(hjust = 0.5))+ theme(legend.position = "none")  
