@@ -39,9 +39,13 @@ Diaz_et_al_22.Rmd ... Rmarkdown file to reproduce the analysis.
 
 [plyr](https://cran.r-project.org/web/packages/plyr/index.html) - Set of tools that solves problems relates with applying or combining data.
 
+[purrrlyr](https://cran.r-project.org/web/packages/purrrlyr/index.html) - This package allows some functions at the intersection of “dplyr”. and “purrr”.
+
 [raster](https://cran.r-project.org/web/packages/raster/index.html) - Reading, writing, manipulating, analysing and modelling of spatial data.
 
 [readxl](https://cran.r-project.org/web/packages/readxl/index.html) - Package for read excel files.
+
+[Rcmdr](https://cran.r-project.org/web/packages/Rcmdr/index.html) - A platform-independent basic-statistics GUI (graphical user interface) for R.
 
 [rgdal](https://cran.r-project.org/web/packages/rgdal/index.html) - Provides bindings to the “GDAL” and “PROJ” library.
 
@@ -52,8 +56,6 @@ Diaz_et_al_22.Rmd ... Rmarkdown file to reproduce the analysis.
 [spatstat](https://cran.r-project.org/web/packages/spatstat/index.html) - Toolbox for analysing Spatial Point Patterns.
 
 [tidyverse](https://cran.r-project.org/web/packages/tidyverse/index.html) - Data representations and API design.
-
-[purrrlyr](https://cran.r-project.org/web/packages/purrrlyr/index.html) - This package allows some functions at the intersection of “dplyr”. and “purrr”.
 
 ### References about the packages
 
@@ -95,7 +97,7 @@ Wickham, H., Chang, W., Henry, L., Pedersen, T.L., Takahashi, K., Wilke, C., Woo
 ## Source code and data reference
 Mikel Díaz-Rodríguez<a href="https://orcid.org/0000-0002-2703-1507">
 <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="14" height="14" />
-</a>. (2023, April 7). Living in the mountains. Settlement patterns in Northwestern Iberia during Palaeolithic period. Source code and data. Zenodo. https://doi.org/10.5281/zenodo.7808861
+</a>. (2023, November 9). Living in the mountains. Settlement patterns in Northwestern Iberia during Palaeolithic period. Source code and data. Zenodo. https://doi.org/10.5281/zenodo.7808861
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7808861.svg)](https://doi.org/10.5281/zenodo.7808861)
 
