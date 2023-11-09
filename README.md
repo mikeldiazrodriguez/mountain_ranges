@@ -12,13 +12,15 @@ This repository contains data and code to enable reproducibility of the paper: D
 
 /grids/ ... folder with the layers of the covariates used in the study.
 
+/output/ ... folder with the output files in PNG format.
+
 /shp/ ... folder with the layers of the sites, the random points and the study area in vector format.
 
 /sm/ ... folder with supplementary information appendix with a detailed description of the obtention of each covariate.
 
-Diaz_et_al_22.html ... html file to reproduce the analysis.
+Diaz_23.html ... html file to reproduce the analysis.
 
-Diaz_et_al_22.Rmd ... Rmarkdown file to reproduce the analysis.
+Diaz_23.Rmd ... Rmarkdown file to reproduce the analysis.
 
 ## R Packages used
 [dismo](https://cran.r-project.org/web/packages/dismo/dismo.pdf) - Methods for species distribution modelling.
