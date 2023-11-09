@@ -71,6 +71,8 @@ Bivand, R., Rundel, C., Pebesma, E., Stuetz, R., Hufthammer, K.O., Giraudoux, P.
 
 Brown, P.E., 2015. Model-Based Geostatistics the Easy Way. Journal of Statistical Software 63, 1–24. doi:10.18637/jss.v063.i12
 
+Fox, J., Marquez, M.M., Bouchet-Valat, M., 2023. Rcmdr: R Commander.
+
 Henry, L., 2022. Tools at the Intersection of ‘purrr’ and ‘dplyr’.
 
 Hijmans, R.J., Phillips, S., Leathwick, J., Elith, J., 2017. dismo: Species Distribution Modeling.
