@@ -12,13 +12,15 @@ This repository contains data and code to enable reproducibility of the paper: D
 
 /grids/ ... folder with the layers of the covariates used in the study.
 
+/output/ ... folder with the output files in PNG format.
+
 /shp/ ... folder with the layers of the sites, the random points and the study area in vector format.
 
 /sm/ ... folder with supplementary information appendix with a detailed description of the obtention of each covariate.
 
-Diaz_et_al_22.html ... html file to reproduce the analysis.
+Diaz_23.html ... html file to reproduce the analysis.
 
-Diaz_et_al_22.Rmd ... Rmarkdown file to reproduce the analysis.
+Diaz_23.Rmd ... Rmarkdown file to reproduce the analysis.
 
 ## R Packages used
 [dismo](https://cran.r-project.org/web/packages/dismo/dismo.pdf) - Methods for species distribution modelling.
@@ -39,9 +41,13 @@ Diaz_et_al_22.Rmd ... Rmarkdown file to reproduce the analysis.
 
 [plyr](https://cran.r-project.org/web/packages/plyr/index.html) - Set of tools that solves problems relates with applying or combining data.
 
+[purrrlyr](https://cran.r-project.org/web/packages/purrrlyr/index.html) - This package allows some functions at the intersection of “dplyr”. and “purrr”.
+
 [raster](https://cran.r-project.org/web/packages/raster/index.html) - Reading, writing, manipulating, analysing and modelling of spatial data.
 
 [readxl](https://cran.r-project.org/web/packages/readxl/index.html) - Package for read excel files.
+
+[Rcmdr](https://cran.r-project.org/web/packages/Rcmdr/index.html) - A platform-independent basic-statistics GUI (graphical user interface) for R.
 
 [rgdal](https://cran.r-project.org/web/packages/rgdal/index.html) - Provides bindings to the “GDAL” and “PROJ” library.
 
@@ -52,8 +58,6 @@ Diaz_et_al_22.Rmd ... Rmarkdown file to reproduce the analysis.
 [spatstat](https://cran.r-project.org/web/packages/spatstat/index.html) - Toolbox for analysing Spatial Point Patterns.
 
 [tidyverse](https://cran.r-project.org/web/packages/tidyverse/index.html) - Data representations and API design.
-
-[purrrlyr](https://cran.r-project.org/web/packages/purrrlyr/index.html) - This package allows some functions at the intersection of “dplyr”. and “purrr”.
 
 ### References about the packages
 
@@ -68,6 +72,8 @@ Bivand, R., Keitt, T., Rowlingson, B., Pebesma, E., Sumner, M., Hijmans, R., Rou
 Bivand, R., Rundel, C., Pebesma, E., Stuetz, R., Hufthammer, K.O., Giraudoux, P., Davis, M., Santilli, S., 2020c. rgeos: Interface to Geometry Engine - Open Source ('GEOS’).
 
 Brown, P.E., 2015. Model-Based Geostatistics the Easy Way. Journal of Statistical Software 63, 1–24. doi:10.18637/jss.v063.i12
+
+Fox, J., Marquez, M.M., Bouchet-Valat, M., 2023. Rcmdr: R Commander.
 
 Henry, L., 2022. Tools at the Intersection of ‘purrr’ and ‘dplyr’.
 
@@ -95,7 +101,7 @@ Wickham, H., Chang, W., Henry, L., Pedersen, T.L., Takahashi, K., Wilke, C., Woo
 ## Source code and data reference
 Mikel Díaz-Rodríguez<a href="https://orcid.org/0000-0002-2703-1507">
 <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="14" height="14" />
-</a>. (2023, April 7). Living in the mountains. Settlement patterns in Northwestern Iberia during Palaeolithic period. Source code and data. Zenodo. https://doi.org/10.5281/zenodo.7808861
+</a>. (2023, November 9). Living in the mountains. Settlement patterns in Northwestern Iberia during Palaeolithic period. Source code and data. Zenodo. https://doi.org/10.5281/zenodo.7808861
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7808861.svg)](https://doi.org/10.5281/zenodo.7808861)
 
