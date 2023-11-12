@@ -16,7 +16,7 @@ This repository contains data and code to enable reproducibility of the paper: D
 
 /shp/ ... folder with the layers of the sites, the random points and the study area in vector format.
 
-/sm/ ... folder with supplementary information appendix with a detailed description of the obtention of each covariate.
+/sm/ ... folder with supplementary information appendix with a detailed description of the obtention of each variable and some extra information.
 
 Diaz_23.html ... html file to reproduce the analysis.
 
