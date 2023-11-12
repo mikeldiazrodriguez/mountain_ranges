@@ -1,7 +1,7 @@
 ---
-title: "TBC *"
+title: "Living in the mountains. Settlement patterns in Northwestern Iberia during Palaeolithic period. Source code and data."
 author: "Mikel Diaz-Rodriguez"
-date: "March 7th, 2023"
+date: "November 9th, 2023"
 output: html_document
 ---
 
@@ -16,11 +16,9 @@ This document contains code to enable reproducibility of the paper "Living in th
 
 For this, it is necessary to execute the steps shown in the following lines.
 
-# Complete Spatial Randomness
-
 ### Necessary packages
 
-Import the necessary packages to analyse the CSR.
+Import the packages to execute the following analysis.
 
 ```{r echo=FALSE, results='hide'}
 # ipak function: install and load multiple R packages.
@@ -33,9 +31,13 @@ ipak <- function(pkg){
   sapply(pkg, require, character.only = TRUE)
 }
 # usage
-packages <- c("GGally", "readxl", "rgdal", "rgeos", "sp", "spatstat", "tidyverse", "dismo", "MASS", "ggplot2", "plyr", "maps", "maptools", "raster", "geostatsp", "patchwork", "foreach", "purrrlyr")
+packages <- c("GGally", "readxl", "rgdal", "rgeos", "sp", "spatstat", "tidyverse", "dismo", "MASS", "ggplot2", "plyr", "maps", "maptools", "raster", "geostatsp", "patchwork", "foreach", "purrrlyr", "Rcmdr")
 ipak(packages)
 ```
+
+# Complete Spatial Randomness
+
+Process to check if Complete Spatial Randomness (CSR) exists.
 
 ### Import data
 
@@ -1852,7 +1854,7 @@ round(background_DIFINS_MWU, 3)
 
 ## WIND
 
-Create kernel density plot graph for the variable SLO.
+Create kernel density plot graph for the variable WIND.
 
 ```{r echo=TRUE, results='hide'}
 ## Extract cell site from the Northern area
@@ -2507,7 +2509,7 @@ round(background_TPI500_MWU, 3)
 
 ## TPI1000
 
-Create kernel density plot graph for the variable TPI100.
+Create kernel density plot graph for the variable TPI1000.
 
 ```{r echo=TRUE, results='hide'}
 ## Extract cell site from the Central area
@@ -4131,11 +4133,11 @@ Process to create the boxplots comparing archaeological sites and random points.
 ```{r echo=TRUE, results='hide'}
 #Boxplot
 ## set the working directory
-setwd("C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv")
+setwd("~/mountain_ranges/csv")
 
 ## Import files
-boxplot_variables_northern <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
-boxplot_variables_central <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_variables_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+boxplot_variables_northern <- read.csv(file = "~/csv/boxplot_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+boxplot_variables_central <- read.csv(file = "~/csv/boxplot_variables_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
 
 
 ## Sites vs random sites in Northern Mountain ranges
@@ -4306,7 +4308,7 @@ png(file = "~/output/Figure13.png",width = 1506,height = 750)
 
 ```{r echo=TRUE, results='hide'}
 ## Import files
-boxplot_northern_vs_central <- read.csv(file = "C:/Users/Mikel/Documents/Curso_2022-2023/Sierras_paper/Github/mountain_ranges/csv/boxplot_northern_vs_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+boxplot_northern_vs_central <- read.csv(file = "~/csv/boxplot_northern_vs_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
 
 ## Delete the grey theme
 theme_set(theme_bw())
@@ -4514,19 +4516,19 @@ png(file = "~/output/Figure18-SM.png",width = 1506,height = 750)
 ```
 
 # Statistical tests
-XXX
+
+Statistical test calculations in each area.
 
 ## Northern area
 
 ```{r echo=TRUE, results='hide'}
 ## Import files
 test_northern <- read.csv(file = "~/csv/boxplot_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+```
 
-## Install and load Rcmdr package
-install.packages("Rcmdr")
-library(Rcmdr)
+### ALTm
 
-# ALTm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~ALTm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4536,8 +4538,11 @@ wilcox.test(ALTm ~ Type, alternative="two.sided", data=test_northern) # Shows di
 ## T Welch Test for independent samples
 t.test(ALTm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # Shows different variances p-value < 0.05 -- Samples from different populations#
        data=test_northern)
+```
 
-# TPI100m
+### TPI100m
+
+```{r echo=TRUE, results='hide'}
 ## Normality Test
 normalityTest(~TPI100m, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4547,9 +4552,11 @@ wilcox.test(TPI100m ~ Type, alternative="two.sided", data=test_northern) # Shows
 ## T Student Test for independent samples
 t.test(TPI100m~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from different populations#
        data=test_northern)
+```
 
+### TPI500m
 
-# TPI500m
+```{r echo=TRUE, results='hide'}
 ## Normality Test
 normalityTest(~TPI500m, test="shapiro.test", data=test_northern) # Shows normality p-value > 0.05 -- F test#
 
@@ -4560,9 +4567,11 @@ var.test(TPI500m ~ Type, alternative='two.sided', conf.level=.95,
 ## T Student Test for independent samples
 t.test(TPI500m~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### TPI1000m
 
-# TPI1000m
+```{r echo=TRUE, results='hide'}
 ## Normality Test
 normalityTest(~TPI1000m, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4572,9 +4581,11 @@ wilcox.test(TPI1000m ~ Type, alternative="two.sided", data=test_northern) # Show
 ## T Student Test for independent samples
 t.test(TPI1000m~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### SLOm
 
-# SLOm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~SLOm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4584,9 +4595,11 @@ wilcox.test(SLOm ~ Type, alternative="two.sided", data=test_northern) # Shows sa
 ## T Student Test for independent samples
 t.test(SLOm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### ASPm
 
-# ASPm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~ASPm, test="shapiro.test", data=test_northern) # Shows normality p-value > 0.05 -- F test#
 
@@ -4597,9 +4610,11 @@ var.test(ASPm ~ Type, alternative='two.sided', conf.level=.95,
 ## T Student Test for independent samples
 t.test(ASPm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### HYDROEm
 
-# HYDROEm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~HYDROEm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4609,9 +4624,11 @@ wilcox.test(HYDROEm ~ Type, alternative="two.sided", data=test_northern) # Shows
 ## T Student Test for independent samples
 t.test(HYDROEm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### HYDROCm
 
-# HYDROCm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~HYDROCm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4621,9 +4638,11 @@ wilcox.test(HYDROCm ~ Type, alternative="two.sided", data=test_northern) # Shows
 ## T Student Test for independent samples
 t.test(HYDROCm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### WETm
 
-# WETm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~WETm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4633,9 +4652,11 @@ wilcox.test(WETm ~ Type, alternative="two.sided", data=test_northern) # Shows sa
 ## T Student Test for independent samples
 t.test(WETm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### GEOLEm
 
-# GEOLEm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~GEOLEm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4645,9 +4666,11 @@ wilcox.test(GEOLEm ~ Type, alternative="two.sided", data=test_northern) # Shows 
 ## T Welch Test for independent samples
 t.test(GEOLEm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # Shows different variances p-value < 0.05 -- Samples from different populations#
        data=test_northern)
+```
 
+### GEOLCm
 
-# GEOLCm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~GEOLCm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4657,9 +4680,11 @@ wilcox.test(GEOLCm ~ Type, alternative="two.sided", data=test_northern) # Shows 
 ## T Welch Test for independent samples
 t.test(GEOLCm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # Shows different variances p-value < 0.05 -- Samples from different populations#
        data=test_northern)
+```
 
+### VISPRm
 
-# VISPRm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~VISPRm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4669,9 +4694,11 @@ wilcox.test(VISPRm ~ Type, alternative="two.sided", data=test_northern) # Shows 
 ## T Student Test for independent samples
 t.test(VISPRm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### LCPCm
 
-# LCPCm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~LCPCm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4681,9 +4708,11 @@ wilcox.test(LCPCm ~ Type, alternative="two.sided", data=test_northern) # Shows s
 ## T Student Test for independent samples
 t.test(LCPCm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### TOTINSm
 
-# TOTINSm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~TOTINSm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4693,9 +4722,11 @@ wilcox.test(TOTINSm ~ Type, alternative="two.sided", data=test_northern) # Shows
 ## T Student Test for independent samples
 t.test(TOTINSm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### DIRINSm
 
-# DIRINSm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~DIRINSm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4705,9 +4736,11 @@ wilcox.test(DIRINSm ~ Type, alternative="two.sided", data=test_northern) # Shows
 ## T Student Test for independent samples
 t.test(DIRINSm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
 
+### DIFINSm
 
-# DIFINSm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~DIFINSm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4717,9 +4750,11 @@ wilcox.test(DIFINSm ~ Type, alternative="two.sided", data=test_northern) # Shows
 ## T Welch Test for independent samples
 t.test(DIFINSm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # Shows different variances p-value < 0.05 -- Samples from different populations#
        data=test_northern)
+```
 
+### WINDm
 
-# WINDm
+```{r echo=TRUE, results='hide'}
 ## Shapiro-Wilk Test to check Normality 
 normalityTest(~WINDm, test="shapiro.test", data=test_northern) # Shows non normality p-value < 0.05 -- Wilcoxon test#
 
@@ -4729,4 +4764,489 @@ wilcox.test(WINDm ~ Type, alternative="two.sided", data=test_northern) # Shows s
 ## T Student Test for independent samples
 t.test(WINDm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
        data=test_northern)
+```
+
+## Central area
+
+```{r echo=TRUE, results='hide'}
+## Import files
+## Import files
+test_central <- read.csv(file = "~/csv/boxplot_variables_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+```
+
+### ALTm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~ALTm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(ALTm ~ Type, alternative="two.sided", data=test_central) # Shows different variances p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(ALTm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+```
+
+### TPI100m
+
+```{r echo=TRUE, results='hide'}
+## Normality Test
+normalityTest(~TPI100m, test="shapiro.test", data=test_central) # Shows normality p-value > 0.05 -- F test#
+
+## F Test for check parametric homoscedasticity/variances (medians by group)
+var.test(TPI100m ~ Type, alternative='two.sided', conf.level=.95, 
+         data=test_central) # Shows same variance p-value > 0.05 -- T student test#
+
+## T Student Test for independent samples
+t.test(TPI100m~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+```
+
+### TPI500m
+
+```{r echo=TRUE, results='hide'}
+## Normality Test
+normalityTest(~TPI500m, test="shapiro.test", data=test_central) # Shows normality p-value > 0.05 -- F test#
+
+## F Test for check parametric homoscedasticity/variances (medians by group)
+var.test(TPI500m ~ Type, alternative='two.sided', conf.level=.95, 
+         data=test_central) # Shows different variances p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(TPI500m~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+```
+
+### TPI1000m
+
+```{r echo=TRUE, results='hide'}
+## Normality Test
+normalityTest(~TPI1000m, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(TPI1000m ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(TPI1000m~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+```
+
+### SLOm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~SLOm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(SLOm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T student test#
+
+## T Student Test for independent samples
+t.test(SLOm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+```
+
+### ASPm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~ASPm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(ASPm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T student test#
+
+## T Student Test for independent samples
+t.test(ASPm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+```
+
+### HYDROEm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~HYDROEm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (meedians by group) 
+wilcox.test(HYDROEm ~ Type, alternative="two.sided", data=test_central) # Shows different variances p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(HYDROEm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+```
+
+### HYDROCm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~HYDROCm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(HYDROCm ~ Type, alternative="two.sided", data=test_central) # Shows different variances p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(HYDROCm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+```
+
+### WETm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~WETm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(WETm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T student test#
+
+## T Student Test for independent samples
+t.test(WETm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+```
+
+### GEOLEm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~GEOLEm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(GEOLEm ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(GEOLEm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+```
+
+### GEOLCm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~GEOLCm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(GEOLCm ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(GEOLCm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+```
+
+### VISPRm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~VISPRm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(VISPRm ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(VISPRm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+```
+
+### LCPCm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~LCPCm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(LCPCm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T Student test#
+
+## T Student Test for independent samples
+t.test(LCPCm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+```
+
+### TOTINSm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~TOTINSm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(TOTINSm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T Student test#
+
+## T Student Test for independent samples
+t.test(TOTINSm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+```
+
+### DIRINSm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~DIRINSm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(DIRINSm ~ Type, alternative="two.sided", data=test_central) # Shows same variance p-value > 0.05 -- T Student test#
+
+## T Student Test for independent samples
+t.test(DIRINSm~Type, alternative='two.sided', conf.level=.95, var.equal=TRUE, # p-value > 0.05 -- Samples from same population#
+       data=test_central)
+```
+
+### DIFINSm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~DIFINSm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(DIFINSm ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(DIFINSm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+```
+
+### WINDm
+
+```{r echo=TRUE, results='hide'}
+## Shapiro-Wilk Test to check Normality 
+normalityTest(~WINDm, test="shapiro.test", data=test_central) # Shows non normality p-value < 0.05 -- Wilcoxon test#
+
+## Wilcoxon Test for check non parametric homoscedasticity/variances (medians by group)
+wilcox.test(WINDm ~ Type, alternative="two.sided", data=test_central) # Shows different variance p-value < 0.05 -- T Welch test#
+
+## T Welch Test for independent samples
+t.test(WINDm~Type, alternative='two.sided', conf.level=.95, var.equal=FALSE, # Shows different variances p-value < 0.05 -- Samples from different populations#
+       data=test_central)
+```
+
+## Summary results of sites and random sites
+
+### Northern area
+
+```{r echo=TRUE, results='hide'}
+## Import files
+variables_northern <- read.csv(file = "~/csv/table_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+
+## summary sites ALTm
+summary(variables_northern$ALTm)
+
+## summary sites TPI100m
+summary(variables_northern$TPI100m)
+
+## summary sites TPI500m
+summary(variables_northern$TPI500m)
+
+## summary sites TPI1000m
+summary(variables_northern$TPI1000m)
+
+## summary sites SLOm
+summary(variables_northern$SLOm)
+
+## summary sites ASPm
+summary(variables_northern$ASPm)
+
+## summary sites HYDROEm
+summary(variables_northern$HYDROEm)
+
+## summary sites HYDROCm
+summary(variables_northern$HYDROCm)
+
+## summary sites WETm
+summary(variables_northern$WETm)
+
+## summary sites GEOLEm
+summary(variables_northern$GEOLEm)
+
+## summary sites GEOLCm
+summary(variables_northern$GEOLCm)
+
+## summary sites VISPRm
+summary(variables_northern$VISPRm)
+
+## summary sites LCPCm
+summary(variables_northern$LCPCm)
+
+## summary sites TOTINSm
+summary(variables_northern$TOTINSm)
+
+## summary sites DIRINSm
+summary(variables_northern$DIRINSm)
+
+## summary sites DIFINSm
+summary(variables_northern$DIFINSm)
+
+## summary sites WINDm
+summary(variables_northern$WINDm)
+```
+
+### Central area sites
+
+```{r echo=TRUE, results='hide'}
+## Import files
+variables_central <- read.csv(file = "~/csv/table_variables_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+
+## summary sites ALTm
+summary(variables_central$ALTm)
+
+## summary sites TPI100m
+summary(variables_central$TPI100m)
+
+## summary sites TPI500m
+summary(variables_central$TPI500m)
+
+## summary sites TPI1000m
+summary(variables_central$TPI1000m)
+
+## summary sites SLOm
+summary(variables_central$SLOm)
+
+## summary sites ASPm
+summary(variables_central$ASPm)
+
+## summary sites HYDROEm
+summary(variables_central$HYDROEm)
+
+## summary sites HYDROCm
+summary(variables_central$HYDROCm)
+
+## summary sites WETm
+summary(variables_central$WETm)
+
+## summary sites GEOLEm
+summary(variables_central$GEOLEm)
+
+## summary sites GEOLCm
+summary(variables_central$GEOLCm)
+
+## summary sites VISPRm
+summary(variables_central$VISPRm)
+
+## summary sites LCPCm
+summary(variables_central$LCPCm)
+
+## summary sites TOTINSm
+summary(variables_central$TOTINSm)
+
+## summary sites DIRINSm
+summary(variables_central$DIRINSm)
+
+## summary sites DIFINSm
+summary(variables_central$DIFINSm)
+
+## summary sites WINDm
+summary(variables_central$WINDm)
+```
+
+### Northern area random sites
+
+```{r echo=TRUE, results='hide'}
+## Import files
+random_sites_northern <- read.csv(file = "~/csv/random_sites_variables_northern.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+## summary random sites ALTm
+summary(random_sites_northern$ALTm)
+
+## summary random sites TPI100m
+summary(random_sites_northern$TPI100m)
+
+## summary random sites TPI500m
+summary(random_sites_northern$TPI500m)
+
+## summary random sites TPI1000m
+summary(random_sites_northern$TPI1000m)
+
+## summary random sites SLOm
+summary(random_sites_northern$SLOm)
+
+## summary random sites ASPm
+summary(random_sites_northern$ASPm)
+
+## summary random sites HYDROEm
+summary(random_sites_northern$HYDROEm)
+
+## summary random sites HYDROCm
+summary(random_sites_northern$HYDROCm) 
+
+## summary random sites WETm
+summary(random_sites_northern$WETm)
+
+## summary random sites GEOLEm
+summary(random_sites_northern$GEOLEm)
+
+## summary random sites GEOLCm
+summary(random_sites_northern$GEOLCm)
+
+## summary random sites VISPRm
+summary(random_sites_northern$VISPRm)
+
+## summary random sites LCPCm
+summary(random_sites_northern$LCPCm)
+
+## summary random sites TOTINSm
+summary(random_sites_northern$TOTINSm)
+
+## summary random sites DIRINSm
+summary(random_sites_northern$DIRINSm)
+
+## summary random sites DIFINSm
+summary(random_sites_northern$DIFINSm)
+
+## summary random sites WINDm
+summary(random_sites_northern$WINDm)
+```
+
+### Central area random sites
+
+```{r echo=TRUE, results='hide'}
+## Import files
+random_sites_central <- read.csv(file = "~/csv/random_sites_variables_central.csv",header=TRUE, sep=";", stringsAsFactors=F, dec=",")
+
+
+## summary random sites ALTm
+summary(random_sites_central$ALTm)
+
+## summary random sites TPI100m
+summary(random_sites_central$TPI100m)
+
+## summary random sites TPI500m
+summary(random_sites_central$TPI500m)
+
+## summary random sites TPI1000m
+summary(random_sites_central$TPI1000m)
+
+## summary random sites SLOm
+summary(random_sites_central$SLOm)
+
+## summary random sites ASPm
+summary(random_sites_central$ASPm)
+
+## summary random sites HYDROEm
+summary(random_sites_central$HYDROEm)
+
+## summary random sites HYDROCm
+summary(random_sites_central$HYDROCm)
+
+## summary random sites WETm
+summary(random_sites_central$WETm)
+
+## summary random sites GEOLEm
+summary(random_sites_central$GEOLEm)
+
+## summary random sites GEOLCm
+summary(random_sites_central$GEOLCm)
+
+## summary random sites VISPRm
+summary(random_sites_central$VISPRm)
+
+## summary random sites LCPCm
+summary(random_sites_central$LCPCm)
+
+## summary random sites TOTINSm
+summary(random_sites_central$TOTINSm)
+
+## summary random sites DIRINSm
+summary(random_sites_central$DIRINSm)
+
+## summary random sites DIFINSm
+summary(random_sites_central$DIFINSm)
+
+## summary random sites WINDm
+summary(random_sites_central$WINDm)
 ```
