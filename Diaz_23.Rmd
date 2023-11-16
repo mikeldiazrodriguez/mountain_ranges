@@ -1,5 +1,5 @@
 ---
-title: Living in the mountains. Settlement patterns in Northwestern Iberia during
+title: Living in the Mountains. Settlement patterns in Northwestern Iberia during the
   Palaeolithic period. Source code and data.
 author: "Mikel Diaz-Rodriguez"
 date: "November 16th, 2023"
