@@ -1,8 +1,11 @@
 ---
-title: "Living in the mountains. Settlement patterns in Northwestern Iberia during Palaeolithic period. Source code and data."
+title: Living in the mountains. Settlement patterns in Northwestern Iberia during
+  Palaeolithic period. Source code and data.
 author: "Mikel Diaz-Rodriguez"
-date: "November 9th, 2023"
-output: html_document
+date: "November 16th, 2023"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
