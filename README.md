@@ -1,7 +1,7 @@
 # Living in the Mountains. Settlement patterns in Northwestern Iberia during the Palaeolithic period
 This repository contains data and code to enable reproducibility of the paper: Díaz-Rodríguez, M.<a href="https://orcid.org/0000-0002-2703-1507">
 <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="14" height="14" />
-</a>. (2024). "Living in the mountains. Settlement patterns in Northwestern Iberia during Palaeolithic period". Archaeological and Anthropological Sciences, 16 (137).
+</a>. (2024). "Living in the mountains. Settlement patterns in Northwestern Iberia during Palaeolithic period". Archaeological and Anthropological Sciences, 16 (137). DOI: 10.1007/s12520-024-02049-7
 
 ## Repository structure
 /csv/*.csv ... contains CSV files with the data to elaborate some statistical analysis.
